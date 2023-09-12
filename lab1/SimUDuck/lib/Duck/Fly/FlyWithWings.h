@@ -4,6 +4,8 @@
 #include "IFlyBehavior.h"
 #include <iostream>
 
+// как сделать так чтобы после смены количества вылетов утка не забывала сколько раз она летала если летала крыльями а потом на тяге запоминала
+
 class FlyWithWings : public IFlyBehavior
 {
 public:

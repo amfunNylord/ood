@@ -9,6 +9,7 @@
 #include <iostream>
 #include <memory>
 
+// возможность танцевать и летать или изменять танец не у всех уток
 class Duck
 {
 public:
