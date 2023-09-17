@@ -1,0 +1,5 @@
+AddShape sh1 #ff00ff circle 100 110 15 
+AddShape sh1 #123456 rectangle 10 20 30 40
+AddShape tr1 #00fefe triangle 0 0 10 0 0 10
+AddShape ln1 #fefefe line 10 20 35 -88
+AddShape txt1 #ffaa88 text 100.3 100.2 12.8 Hello world
