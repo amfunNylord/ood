@@ -56,34 +56,31 @@ bool CommandController::AddShape(std::istream& args)
 {
 	std::string shapeId, shapeColor, shapeType;
 	args >> shapeId >> shapeColor >> shapeType;
+	std::shared_ptr<shape::ShapeType> shape;
 
 	if (shapeType == CIRCLE_TYPE)
 	{
 		double x, y, r;
 		args >> x >> y >> r;
-		m_picture.AddShape(std::make_shared<shape::Circle>(shapeId, shapeColor, shapeType, x, y, r));
-		return true;
+		shape = std::make_shared<shape::Circle>(CIRCLE_TYPE, x, y, r);
 	}
 	else if (shapeType == RECTANGLE_TYPE)
 	{
 		double left, top, width, height;
 		args >> left >> top >> width >> height;
-		m_picture.AddShape(std::make_shared<shape::Rectangle>(shapeId, shapeColor, shapeType, left, top, width, height));
-		return true;
+		shape = std::make_shared<shape::Rectangle>(RECTANGLE_TYPE, left, top, width, height);
 	}
 	else if (shapeType == TRIANGLE_TYPE)
 	{
 		double x1, y1, x2, y2, x3, y3;
 		args >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
-		m_picture.AddShape(std::make_shared<shape::Triangle>(shapeId, shapeColor, shapeType, x1, y1, x2, y2, x3, y3));
-		return true;
+		shape = std::make_shared<shape::Triangle>(TRIANGLE_TYPE, x1, y1, x2, y2, x3, y3);
 	}
 	else if (shapeType == LINE_TYPE)
 	{
 		double x1, y1, x2, y2;
 		args >> x1 >> y1 >> x2 >> y2;
-		m_picture.AddShape(std::make_shared<shape::Line>(shapeId, shapeColor, shapeType, x1, y1, x2, y2));
-		return true;
+		shape = std::make_shared<shape::Line>(LINE_TYPE, x1, y1, x2, y2);
 	}
 	else if (shapeType == TEXT_TYPE)
 	{
@@ -92,14 +89,15 @@ bool CommandController::AddShape(std::istream& args)
 		std::string textContents;
 		getline(args, textContents);
 		textContents.erase(textContents.begin());
-		m_picture.AddShape(std::make_shared<shape::Text>(shapeId, shapeColor, shapeType, left, top, size, textContents));
-		return true;
+		shape = std::make_shared<shape::Text>(TEXT_TYPE, left, top, size, textContents);
 	}
 	else
 	{
 		m_output << "Incorrect type" << std::endl;
 		return true;
 	}
+	m_picture.AddShape(std::make_shared<shape::Shape>(shapeId, shapeColor, shape));
+	return true;
 }
 
 bool CommandController::List()
@@ -145,8 +143,42 @@ bool CommandController::ChangeShape(std::istream& args)
 		m_output << "Incorrect type" << std::endl;
 		return true;
 	}
+	std::shared_ptr<shape::ShapeType> shape;
+	if (shapeType == CIRCLE_TYPE)
+	{
+		double x, y, r;
+		args >> x >> y >> r;
+		shape = std::make_shared<shape::Circle>(CIRCLE_TYPE, x, y, r);
+	}
+	else if (shapeType == RECTANGLE_TYPE)
+	{
+		double left, top, width, height;
+		args >> left >> top >> width >> height;
+		shape = std::make_shared<shape::Rectangle>(RECTANGLE_TYPE, left, top, width, height);
+	}
+	else if (shapeType == TRIANGLE_TYPE)
+	{
+		double x1, y1, x2, y2, x3, y3;
+		args >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
+		shape = std::make_shared<shape::Triangle>(TRIANGLE_TYPE, x1, y1, x2, y2, x3, y3);
+	}
+	else if (shapeType == LINE_TYPE)
+	{
+		double x1, y1, x2, y2;
+		args >> x1 >> y1 >> x2 >> y2;
+		shape = std::make_shared<shape::Line>(LINE_TYPE, x1, y1, x2, y2);
+	}
+	else if (shapeType == TEXT_TYPE)
+	{
+		double left, top, size;
+		args >> left >> top >> size;
+		std::string textContents;
+		getline(args, textContents);
+		textContents.erase(textContents.begin());
+		shape = std::make_shared<shape::Text>(TEXT_TYPE, left, top, size, textContents);
+	}
 
-	changeableShape.get()->ChangeShape(shapeId, shapeType, m_input);
+	changeableShape.get()->ChangeShape(shapeId, shapeType, shape);
 
 	return true;
 }

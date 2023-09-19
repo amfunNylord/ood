@@ -1,12 +1,12 @@
 #pragma once
-#include "Shape.h"
+#include "ShapeType.h"
 
 namespace shape
 {
-	class Rectangle final : public Shape
+	class Rectangle final : public ShapeType
 	{
 	public:
-		Rectangle(std::string id, std::string color, std::string type, double left, double top, double width, double height);
+		Rectangle(std::string type, double left, double top, double width, double height);
 		~Rectangle();
 
 	private:

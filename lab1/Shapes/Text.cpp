@@ -1,8 +1,8 @@
 #include "Text.h"
 #include <iostream>
 
-shape::Text::Text(std::string id, std::string color, std::string type, double left, double top, double size, std::string text)
-	: Shape(id, color, type)
+shape::Text::Text(std::string type, double left, double top, double size, std::string text)
+	: ShapeType(type)
 	, m_left(left)
 	, m_top(top)
 	, m_size(size)

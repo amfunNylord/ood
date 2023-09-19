@@ -1,15 +1,15 @@
 #pragma once
-#include "Shape.h"
+#include "ShapeType.h"
 
 namespace shape
 {
-	class Circle final : public Shape
+	class Circle final : public ShapeType
 	{
 	public:
-		Circle(std::string id, std::string color, std::string type, double x, double y, double r);
+		Circle(std::string type, double x, double y, double r);
 		~Circle();
-	private:
 		void AppendProperties(std::ostream& strm) const override;
+	private:
 		double m_x;
 		double m_y;
 		double m_r;

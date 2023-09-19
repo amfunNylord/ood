@@ -1,14 +1,14 @@
 #pragma once
-#include "Shape.h"
+#include "ShapeType.h"
 namespace shape
 {
-	class Triangle final : public Shape
+	class Triangle final : public ShapeType
 	{
 	public:
-		Triangle(std::string id, std::string color, std::string type, double x1, double y1, double x2, double y2, double x3, double y3);
+		Triangle(std::string type, double x1, double y1, double x2, double y2, double x3, double y3);
 		~Triangle();
-	private:
 		void AppendProperties(std::ostream& strm) const override;
+	private:
 		double m_x1;
 		double m_y1;
 		double m_x2;

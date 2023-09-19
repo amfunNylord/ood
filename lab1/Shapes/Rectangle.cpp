@@ -1,8 +1,8 @@
 #include "Rectangle.h"
 #include <iostream>
 
-shape::Rectangle::Rectangle(std::string id, std::string color, std::string type, double left, double top, double width, double height)
-	: Shape(id, color, type)
+shape::Rectangle::Rectangle(std::string type, double left, double top, double width, double height)
+	: ShapeType(type)
 	, m_left(left)
 	, m_top(top)
 	, m_width(width)

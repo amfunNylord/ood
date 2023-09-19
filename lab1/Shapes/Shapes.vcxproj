@@ -134,6 +134,7 @@
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Shapes.cpp" />
+    <ClCompile Include="ShapeType.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Triangle.cpp" />
   </ItemGroup>
@@ -149,6 +150,7 @@
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="RectangleDrawingStrategy.h" />
     <ClInclude Include="Shape.h" />
+    <ClInclude Include="ShapeType.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Triangle.h" />
   </ItemGroup>

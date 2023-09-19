@@ -1,8 +1,8 @@
 #include "Triangle.h"
 #include <iostream>
 
-shape::Triangle::Triangle(std::string id, std::string color, std::string type, double x1, double y1, double x2, double y2, double x3, double y3)
-	: Shape(id, color, type)
+shape::Triangle::Triangle(std::string type, double x1, double y1, double x2, double y2, double x3, double y3)
+	: ShapeType(type)
 	, m_x1(x1)
 	, m_y1(y1)
 	, m_x2(x2)

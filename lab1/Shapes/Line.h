@@ -1,15 +1,16 @@
 #pragma once
-#include "Shape.h"
+#include "ShapeType.h"
+
 namespace shape
 {
-	class Line final : public Shape
+	class Line final : public ShapeType
 	{
 	public:
-		Line(std::string id, std::string color, std::string type, double x1, double y1, double x2, double y2);
+		Line(std::string type, double x1, double y1, double x2, double y2);
 		~Line();
+		void AppendProperties(std::ostream& strm) const override;
 
 	private:
-		void AppendProperties(std::ostream& strm) const override;
 		double m_x1;
 		double m_y1;
 		double m_x2;

@@ -1,8 +1,8 @@
 #include "Circle.h"
 #include <iostream>
 
-shape::Circle::Circle(std::string id, std::string color, std::string type, double x, double y, double r)
-	: Shape(id, color, type)
+shape::Circle::Circle(std::string type, double x, double y, double r)
+	: ShapeType(type)
 	, m_x(x)
 	, m_y(y)
 	, m_r(r)

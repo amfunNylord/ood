@@ -1,12 +1,12 @@
 #pragma once
-#include "Shape.h"
+#include "ShapeType.h"
 
 namespace shape
 {
-	class Text final : public Shape
+	class Text final : public ShapeType
 	{
 	public:
-		Text(std::string id, std::string color, std::string type, double left, double top, double size, std::string text);
+		Text(std::string type, double left, double top, double size, std::string text);
 		~Text();
 	private:
 		void AppendProperties(std::ostream& strm) const override;
