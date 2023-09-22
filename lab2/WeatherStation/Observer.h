@@ -1,5 +1,5 @@
 #pragma once
-
+#include <iostream>
 #include <functional>
 #include <set>
 
@@ -46,15 +46,25 @@ public:
 	void NotifyObservers() override
 	{
 		T data = GetChangedData();
+		m_observersLock = true;
 		for (auto& observer : m_observers)
 		{
 			observer->Update(data);
 		}
+		m_observersLock = false;
 	}
 
 	void RemoveObserver(ObserverType& observer) override
 	{
-		m_observers.erase(&observer);
+		if (!m_observersLock)
+		{
+			m_observers.erase(&observer);
+		}
+		else
+		{
+			m_observersLock = false;
+			throw std::logic_error("Can't remove observer while notifying");
+		}
 	}
 
 protected:
@@ -64,4 +74,5 @@ protected:
 
 private:
 	std::set<ObserverType*> m_observers;
+	bool m_observersLock = false;
 };
