@@ -6,8 +6,11 @@ namespace shape
 	class Rectangle final : public ShapeType
 	{
 	public:
-		Rectangle(std::string type, double left, double top, double width, double height);
+		Rectangle(std::string type, std::string color, double left, double top, double width, double height);
+		void Draw(Canvas& canvas) override;
 		~Rectangle();
+
+		void MoveShape(double dx, double dy) override;
 
 	private:
 		void AppendProperties(std::ostream& strm) const override;

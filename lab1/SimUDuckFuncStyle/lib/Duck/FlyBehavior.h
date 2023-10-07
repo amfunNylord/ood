@@ -5,7 +5,7 @@
 #include <iostream>
 
 using FlyBehavior = std::function<void()>;
-
+// при вызове будет суммироваться 
 FlyBehavior flyWithWings = [countOfFlies = 0]() mutable {
 	std::cout << "I'm flying with wings!!" << std::endl;
 	countOfFlies++;

@@ -48,3 +48,8 @@ std::shared_ptr<shape::Shape> shape::Picture::GetShape(std::string shapeId, std:
 	output << "Shape with such id isn't exist" << std::endl;
 	return nullptr;
 }
+
+std::vector<std::shared_ptr<shape::Shape>> shape::Picture::GetAllShapes()
+{
+	return m_shapesVector;
+}

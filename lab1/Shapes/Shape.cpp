@@ -1,25 +1,15 @@
 #include "Shape.h"
 #include <sstream>
 
-shape::Shape::Shape(std::string id, std::string color, std::shared_ptr<ShapeType> shapeType)
+shape::Shape::Shape(std::string id, std::shared_ptr<ShapeType> shapeType)
 	: m_id(id)
-	, m_color(color)
 	, m_shapeType(shapeType)
 {
 }
 
-void shape::Shape::MoveShape()
+std::shared_ptr<shape::ShapeType> shape::Shape::GetShapeType() const
 {
-}
-
-std::string shape::Shape::GetColor() const
-{
-	return m_color;
-}
-
-void shape::Shape::SetColor(std::string newColor)
-{
-	m_color = newColor;
+	return m_shapeType;
 }
 
 std::string shape::Shape::GetId() const
@@ -30,7 +20,7 @@ std::string shape::Shape::GetId() const
 std::string shape::Shape::ToString() const
 {
 	std::ostringstream strm;
-	strm << m_shapeType.get()->GetType() << ' ' << GetId() << ' ' << GetColor() << ' ';
+	strm << m_shapeType.get()->GetType() << ' ' << GetId() << ' ' << m_shapeType.get()->GetColor() << ' ';
 	m_shapeType.get()->AppendProperties(strm);
 	return strm.str();
 }
@@ -38,8 +28,4 @@ std::string shape::Shape::ToString() const
 void shape::Shape::ChangeShape(std::string shapeId, std::string shapeType, std::shared_ptr<ShapeType> shape)
 {
 	this->m_shapeType = shape;
-}
-
-void shape::Shape::DrawShape()
-{
 }

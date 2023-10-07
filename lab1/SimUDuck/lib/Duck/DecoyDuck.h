@@ -21,7 +21,7 @@ public:
 		std::cout << "I'm decoy duck" << std::endl;
 	}
 
-	void Dance() override {}
+	void Dance() {}
 };
 
 #endif

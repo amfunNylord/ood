@@ -23,10 +23,10 @@ CommandController::CommandController(std::istream& input, std::ostream& output, 
 		  { "DeleteShape", bind(&CommandController::DeleteShape, this, std::placeholders::_1) },
 		  { "ChangeColor", bind(&CommandController::ChangeColor, this, std::placeholders::_1) },
 		  { "ChangeShape", bind(&CommandController::ChangeShape, this, std::placeholders::_1) },
-		  /*{ "MoveShape", bind(&CommandController::MoveShape, this, std::placeholders::_1) },
-		  { "MovePicture", bind(&CommandController::MovePicture, this, std::placeholders::_1) },
 		  { "DrawShape", bind(&CommandController::DrawShape, this, std::placeholders::_1) },
-		  { "DrawPicture", std::bind(&CommandController::DrawPicture, this) },*/
+		  { "DrawPicture", std::bind(&CommandController::DrawPicture, this) },
+		  { "MoveShape", bind(&CommandController::MoveShape, this, std::placeholders::_1) },
+		  { "MovePicture", bind(&CommandController::MovePicture, this, std::placeholders::_1) }
 	  })
 {
 }
@@ -62,25 +62,25 @@ bool CommandController::AddShape(std::istream& args)
 	{
 		double x, y, r;
 		args >> x >> y >> r;
-		shape = std::make_shared<shape::Circle>(CIRCLE_TYPE, x, y, r);
+		shape = std::make_shared<shape::Circle>(CIRCLE_TYPE, shapeColor, x, y, r);
 	}
 	else if (shapeType == RECTANGLE_TYPE)
 	{
 		double left, top, width, height;
 		args >> left >> top >> width >> height;
-		shape = std::make_shared<shape::Rectangle>(RECTANGLE_TYPE, left, top, width, height);
+		shape = std::make_shared<shape::Rectangle>(RECTANGLE_TYPE, shapeColor, left, top, width, height);
 	}
 	else if (shapeType == TRIANGLE_TYPE)
 	{
 		double x1, y1, x2, y2, x3, y3;
 		args >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
-		shape = std::make_shared<shape::Triangle>(TRIANGLE_TYPE, x1, y1, x2, y2, x3, y3);
+		shape = std::make_shared<shape::Triangle>(TRIANGLE_TYPE, shapeColor, x1, y1, x2, y2, x3, y3);
 	}
 	else if (shapeType == LINE_TYPE)
 	{
 		double x1, y1, x2, y2;
 		args >> x1 >> y1 >> x2 >> y2;
-		shape = std::make_shared<shape::Line>(LINE_TYPE, x1, y1, x2, y2);
+		shape = std::make_shared<shape::Line>(LINE_TYPE, shapeColor, x1, y1, x2, y2);
 	}
 	else if (shapeType == TEXT_TYPE)
 	{
@@ -89,14 +89,14 @@ bool CommandController::AddShape(std::istream& args)
 		std::string textContents;
 		getline(args, textContents);
 		textContents.erase(textContents.begin());
-		shape = std::make_shared<shape::Text>(TEXT_TYPE, left, top, size, textContents);
+		shape = std::make_shared<shape::Text>(TEXT_TYPE, shapeColor, left, top, size, textContents);
 	}
 	else
 	{
 		m_output << "Incorrect type" << std::endl;
 		return true;
 	}
-	m_picture.AddShape(std::make_shared<shape::Shape>(shapeId, shapeColor, shape));
+	m_picture.AddShape(std::make_shared<shape::Shape>(shapeId, shape));
 	return true;
 }
 
@@ -123,7 +123,7 @@ bool CommandController::ChangeColor(std::istream& args)
 	{
 		return true;
 	}
-	changeableShape.get()->SetColor(shapeColor);
+	changeableShape.get()->GetShapeType()->SetColor(shapeColor);
 	return true;
 }
 
@@ -144,29 +144,30 @@ bool CommandController::ChangeShape(std::istream& args)
 		return true;
 	}
 	std::shared_ptr<shape::ShapeType> shape;
+	std::string shapeColor = changeableShape.get()->GetShapeType()->GetColor();
 	if (shapeType == CIRCLE_TYPE)
 	{
 		double x, y, r;
 		args >> x >> y >> r;
-		shape = std::make_shared<shape::Circle>(CIRCLE_TYPE, x, y, r);
+		shape = std::make_shared<shape::Circle>(CIRCLE_TYPE, shapeColor, x, y, r);
 	}
 	else if (shapeType == RECTANGLE_TYPE)
 	{
 		double left, top, width, height;
 		args >> left >> top >> width >> height;
-		shape = std::make_shared<shape::Rectangle>(RECTANGLE_TYPE, left, top, width, height);
+		shape = std::make_shared<shape::Rectangle>(RECTANGLE_TYPE, shapeColor, left, top, width, height);
 	}
 	else if (shapeType == TRIANGLE_TYPE)
 	{
 		double x1, y1, x2, y2, x3, y3;
 		args >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
-		shape = std::make_shared<shape::Triangle>(TRIANGLE_TYPE, x1, y1, x2, y2, x3, y3);
+		shape = std::make_shared<shape::Triangle>(TRIANGLE_TYPE, shapeColor, x1, y1, x2, y2, x3, y3);
 	}
 	else if (shapeType == LINE_TYPE)
 	{
 		double x1, y1, x2, y2;
 		args >> x1 >> y1 >> x2 >> y2;
-		shape = std::make_shared<shape::Line>(LINE_TYPE, x1, y1, x2, y2);
+		shape = std::make_shared<shape::Line>(LINE_TYPE, shapeColor, x1, y1, x2, y2);
 	}
 	else if (shapeType == TEXT_TYPE)
 	{
@@ -175,10 +176,98 @@ bool CommandController::ChangeShape(std::istream& args)
 		std::string textContents;
 		getline(args, textContents);
 		textContents.erase(textContents.begin());
-		shape = std::make_shared<shape::Text>(TEXT_TYPE, left, top, size, textContents);
+		shape = std::make_shared<shape::Text>(TEXT_TYPE, shapeColor, left, top, size, textContents);
 	}
 
 	changeableShape.get()->ChangeShape(shapeId, shapeType, shape);
 
+	return true;
+}
+
+bool CommandController::DrawShape(std::istream& args)
+{
+	std::string shapeId;
+	args >> shapeId;
+	
+	std::shared_ptr<shape::Shape> drawableShape = m_picture.GetShape(shapeId, m_output);
+	if (drawableShape == nullptr)
+	{
+		return true;
+	}
+
+	sf::RenderWindow window(sf::VideoMode(800, 600), "Shapes", sf::Style::Close);
+	Canvas canvas(sf::Color(), 0.0, 0.0, window);
+
+	window.clear(sf::Color::White);
+
+	drawableShape.get()->GetShapeType()->Draw(canvas);
+
+	window.display();
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+	}
+
+	return true;
+}
+
+bool CommandController::DrawPicture()
+{
+	sf::RenderWindow window(sf::VideoMode(800, 600), "Shapes", sf::Style::Close);
+	Canvas canvas(sf::Color(), 0.0, 0.0, window);
+
+	window.clear(sf::Color::White);
+
+	for (const auto& shape : m_picture.GetAllShapes())
+	{
+		shape.get()->GetShapeType()->Draw(canvas);
+	}
+
+	window.display();
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+	}
+	return true;
+}
+
+bool CommandController::MoveShape(std::istream& args)
+{
+	std::string shapeId;
+	args >> shapeId;
+
+	std::shared_ptr<shape::Shape> drawableShape = m_picture.GetShape(shapeId, m_output);
+	if (drawableShape == nullptr)
+	{
+		return true;
+	}
+	double dx, dy;
+	args >> dx >> dy;
+	drawableShape.get()->GetShapeType()->MoveShape(dx, dy);
+
+	return true;
+}
+
+bool CommandController::MovePicture(std::istream& args)
+{
+	double dx, dy;
+	args >> dx >> dy;
+
+	for (const auto& shape : m_picture.GetAllShapes())
+	{
+		shape.get()->GetShapeType()->MoveShape(dx, dy);
+	}
 	return true;
 }

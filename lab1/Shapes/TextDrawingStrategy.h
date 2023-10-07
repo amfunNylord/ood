@@ -1,7 +1,7 @@
 #pragma once
 #include "IDrawingStrategy.h"
 
-class RectangleDrawingStrategy : public IDrawingStrategy
+class TextDrawingStrategy : public IDrawingStrategy
 {
 public:
 	void Draw(Canvas& canvas, IVisualObjectInfo objInfo) override;
