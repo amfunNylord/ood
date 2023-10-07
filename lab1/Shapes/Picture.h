@@ -14,6 +14,7 @@ namespace shape
 		void List(std::ostream& output);
 
 		std::shared_ptr<shape::Shape> GetShape(std::string shapeId, std::ostream& output);
+		std::vector<std::shared_ptr<Shape>> GetAllShapes();
 
 	private:
 		std::vector<std::shared_ptr<Shape>> m_shapesVector;

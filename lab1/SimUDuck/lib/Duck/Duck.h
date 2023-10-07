@@ -37,7 +37,7 @@ public:
 		m_flyBehavior->Fly();
 	}
 
-	virtual void Dance()
+	void Dance()
 	{
 		m_danceBehavior->Dance();
 	}

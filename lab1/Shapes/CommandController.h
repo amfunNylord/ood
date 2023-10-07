@@ -21,6 +21,11 @@ private:
 	bool DeleteShape(std::istream& args);
 	bool ChangeColor(std::istream& args);
 	bool ChangeShape(std::istream& args);
+	bool DrawShape(std::istream& args);
+	bool DrawPicture();
+	bool MoveShape(std::istream& args);
+	bool MovePicture(std::istream& args);
+
 	using Handler = std::function<bool(std::istream& args)>;
 
 	using ActionMap = std::map<std::string, Handler>;
