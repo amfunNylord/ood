@@ -1,8 +1,8 @@
-#include "Canvas.h"
+#include "CCanvas.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 
-Canvas::Canvas(sf::Color color, double x, double y, sf::RenderWindow& window)
+CCanvas::CCanvas(sf::Color color, double x, double y, sf::RenderWindow& window)
 	: m_color(color)
 	, m_x(x)
 	, m_y(y)
@@ -10,18 +10,18 @@ Canvas::Canvas(sf::Color color, double x, double y, sf::RenderWindow& window)
 {
 }
 
-void Canvas::SetColor(sf::Color newColor)
+void CCanvas::SetColor(sf::Color newColor)
 {
 	m_color = newColor;
 }
 
-void Canvas::MoveTo(double newX, double newY)
+void CCanvas::MoveTo(double newX, double newY)
 {
 	m_x = newX;
 	m_y = newY;
 }
 
-void Canvas::LineTo(double x, double y)
+void CCanvas::LineTo(double x, double y)
 {
 	sf::Vertex line[] = {
 		sf::Vertex(sf::Vector2f((float)m_x, (float)m_y)),
@@ -35,7 +35,7 @@ void Canvas::LineTo(double x, double y)
 	m_y = y;
 }
 
-void Canvas::DrawEllipse(double cx, double cy, double rx, double ry)
+void CCanvas::DrawEllipse(double cx, double cy, double rx, double ry)
 {
 	sf::CircleShape circle((float)rx);
 	circle.setPosition((float)(cx - rx), (float)(cy - ry));
@@ -46,7 +46,7 @@ void Canvas::DrawEllipse(double cx, double cy, double rx, double ry)
 	m_window.draw(circle);
 }
 
-void Canvas::DrawText(double left, double top, double fontSize, const std::string& text)
+void CCanvas::DrawText(double left, double top, double fontSize, const std::string& text)
 {
 	m_x = left;
 	m_y = top;
@@ -60,7 +60,7 @@ void Canvas::DrawText(double left, double top, double fontSize, const std::strin
 	m_window.draw(textToDraw);
 }
 
-sf::RenderWindow& Canvas::GetWindow()
+sf::RenderWindow& CCanvas::GetWindow()
 {
 	return m_window;
 }

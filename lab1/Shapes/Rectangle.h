@@ -7,7 +7,7 @@ namespace shape
 	{
 	public:
 		Rectangle(std::string type, std::string color, double left, double top, double width, double height);
-		void Draw(Canvas& canvas) override;
+		void Draw(CCanvas& canvas) override;
 		~Rectangle();
 
 		void MoveShape(double dx, double dy) override;

@@ -196,7 +196,7 @@ bool CommandController::DrawShape(std::istream& args)
 	}
 
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Shapes", sf::Style::Close);
-	Canvas canvas(sf::Color(), 0.0, 0.0, window);
+	CCanvas canvas(sf::Color(), 0.0, 0.0, window);
 
 	window.clear(sf::Color::White);
 
@@ -220,7 +220,7 @@ bool CommandController::DrawShape(std::istream& args)
 bool CommandController::DrawPicture()
 {
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Shapes", sf::Style::Close);
-	Canvas canvas(sf::Color(), 0.0, 0.0, window);
+	CCanvas canvas(sf::Color(), 0.0, 0.0, window);
 
 	window.clear(sf::Color::White);
 

@@ -6,7 +6,7 @@ namespace shape
 	{
 	public:
 		Triangle(std::string type, std::string color, double x1, double y1, double x2, double y2, double x3, double y3);
-		void Draw(Canvas& canvas) override;
+		void Draw(CCanvas& canvas) override;
 		~Triangle();
 		void AppendProperties(std::ostream& strm) const override;
 		void MoveShape(double dx, double dy) override;

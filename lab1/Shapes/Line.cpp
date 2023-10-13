@@ -11,12 +11,12 @@ shape::Line::Line(std::string type, std::string color, double x1, double y1, dou
 {
 }
 
-void shape::Line::Draw(Canvas& canvas)
+void shape::Line::Draw(CCanvas& canvas)
 {
-	std::vector<Point> bounds;
-	bounds.emplace_back(Point(m_x1, m_y1));
-	bounds.emplace_back(Point(m_x2, m_y2));
-	IVisualObjectInfo objInfo(this->GetColor(), bounds);
+	std::vector<SPoint> bounds;
+	bounds.emplace_back(SPoint(m_x1, m_y1));
+	bounds.emplace_back(SPoint(m_x2, m_y2));
+	VisualObjectInfo objInfo(this->GetColor(), bounds);
 	m_drawingStrategy->Draw(canvas, objInfo);
 }
 

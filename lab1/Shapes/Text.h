@@ -9,7 +9,7 @@ namespace shape
 		Text(std::string type, std::string color, double left, double top, double size, std::string text);
 		~Text();
 
-		void Draw(Canvas& canvas) override;
+		void Draw(CCanvas& canvas) override;
 		void AppendProperties(std::ostream& strm) const override;
 
 		void MoveShape(double dx, double dy) override;

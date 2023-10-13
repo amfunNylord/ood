@@ -25,7 +25,7 @@ std::string shape::Shape::ToString() const
 	return strm.str();
 }
 
-void shape::Shape::ChangeShape(std::string shapeId, std::string shapeType, std::shared_ptr<ShapeType> shape)
+void shape::Shape::ChangeShape(std::string shapeId, std::string shapeTypeStr, std::shared_ptr<ShapeType> shapeType)
 {
-	this->m_shapeType = shape;
+	this->m_shapeType = shapeType;
 }

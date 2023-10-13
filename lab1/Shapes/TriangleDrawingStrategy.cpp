@@ -1,6 +1,6 @@
 #include "TriangleDrawingStrategy.h"
 
-void TriangleDrawingStrategy::Draw(Canvas& canvas, IVisualObjectInfo objInfo)
+void TriangleDrawingStrategy::Draw(CCanvas& canvas, VisualObjectInfo objInfo)
 {
 	canvas.SetColor(objInfo.GetColor());
 

@@ -11,12 +11,12 @@ shape::Text::Text(std::string type, std::string color, double left, double top, 
 {
 }
 
-void shape::Text::Draw(Canvas& canvas)
+void shape::Text::Draw(CCanvas& canvas)
 {
-	std::vector<Point> bounds;
-	bounds.emplace_back(Point(m_left, m_top));
-	bounds.emplace_back(Point(m_size, m_size));
-	IVisualObjectInfo objInfo(this->GetColor(), bounds, m_text);
+	std::vector<SPoint> bounds;
+	bounds.emplace_back(SPoint(m_left, m_top));
+	bounds.emplace_back(SPoint(m_size, m_size));
+	VisualObjectInfo objInfo(this->GetColor(), bounds, m_text);
 	m_drawingStrategy->Draw(canvas, objInfo);
 }
 

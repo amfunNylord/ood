@@ -11,12 +11,12 @@ shape::Rectangle::Rectangle(std::string type, std::string color, double left, do
 {
 }
 
-void shape::Rectangle::Draw(Canvas& canvas)
+void shape::Rectangle::Draw(CCanvas& canvas)
 {
-	std::vector<Point> bounds;
-	bounds.emplace_back(Point(m_left, m_top));
-	bounds.emplace_back(Point(m_width, m_height));
-	IVisualObjectInfo objInfo(this->GetColor(), bounds);
+	std::vector<SPoint> bounds;
+	bounds.emplace_back(SPoint(m_left, m_top));
+	bounds.emplace_back(SPoint(m_width, m_height));
+	VisualObjectInfo objInfo(this->GetColor(), bounds);
 	m_drawingStrategy->Draw(canvas, objInfo);
 }
 

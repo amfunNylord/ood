@@ -1,7 +1,7 @@
-#include "IVIsualObjectInfo.h"
+#include "VisualObjectInfo.h"
 #include <sstream>
 
-IVisualObjectInfo::IVisualObjectInfo(std::string color, std::vector<Point> bounds)
+VisualObjectInfo::VisualObjectInfo(std::string color, std::vector<SPoint> bounds)
 	: m_bounds(bounds)
 {
 	std::string newFormatColor;
@@ -25,7 +25,7 @@ IVisualObjectInfo::IVisualObjectInfo(std::string color, std::vector<Point> bound
 	m_color = sfColor;
 }
 
-IVisualObjectInfo::IVisualObjectInfo(std::string color, std::vector<Point> bounds, std::string text)
+VisualObjectInfo::VisualObjectInfo(std::string color, std::vector<SPoint> bounds, std::string text)
 	: m_bounds(bounds)
 	, m_possibleText(text)
 {
@@ -50,17 +50,17 @@ IVisualObjectInfo::IVisualObjectInfo(std::string color, std::vector<Point> bound
 	m_color = sfColor;
 }
 
-sf::Color IVisualObjectInfo::GetColor() const
+sf::Color VisualObjectInfo::GetColor() const
 {
 	return m_color;
 }
 
-std::vector<Point> IVisualObjectInfo::GetBounds() const
+std::vector<SPoint> VisualObjectInfo::GetBounds() const
 {
 	return m_bounds;
 }
 
-std::string IVisualObjectInfo::GetText() const
+std::string VisualObjectInfo::GetText() const
 {
 	return m_possibleText;
 }

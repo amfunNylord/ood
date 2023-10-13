@@ -10,12 +10,12 @@ shape::Circle::Circle(std::string type, std::string color, double x, double y, d
 {
 }
 
-void shape::Circle::Draw(Canvas& canvas)
+void shape::Circle::Draw(CCanvas& canvas)
 {
-	std::vector<Point> bounds;
-	bounds.emplace_back(Point(m_x, m_y));
-	bounds.emplace_back(Point(m_r, m_r));
-	IVisualObjectInfo objInfo(this->GetColor(), bounds);
+	std::vector<SPoint> bounds;
+	bounds.emplace_back(SPoint(m_x, m_y));
+	bounds.emplace_back(SPoint(m_r, m_r));
+	VisualObjectInfo objInfo(this->GetColor(), bounds);
 	m_drawingStrategy->Draw(canvas, objInfo);
 }
 

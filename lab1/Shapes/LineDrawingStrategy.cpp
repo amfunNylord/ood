@@ -1,6 +1,6 @@
 #include "LineDrawingStrategy.h"
 
-void LineDrawingStrategy::Draw(Canvas& canvas, IVisualObjectInfo objInfo)
+void LineDrawingStrategy::Draw(CCanvas& canvas, VisualObjectInfo objInfo)
 {
 	canvas.SetColor(objInfo.GetColor());
 	

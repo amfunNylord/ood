@@ -15,7 +15,7 @@ namespace shape
 		virtual void MoveShape(double dx, double dy) = 0;
 		void SetColor(std::string newColor);
 		void SetDrawingStrategy(std::shared_ptr<IDrawingStrategy>&& drawingStrategy);
-		virtual void Draw(Canvas& canvas) = 0;
+		virtual void Draw(CCanvas& canvas) = 0;
 		virtual void AppendProperties(std::ostream& strm) const = 0;
 
 	protected:

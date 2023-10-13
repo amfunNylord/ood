@@ -1,6 +1,6 @@
 #include "RectangleDrawingStrategy.h"
 
-void RectangleDrawingStrategy::Draw(Canvas& canvas, IVisualObjectInfo objInfo)
+void RectangleDrawingStrategy::Draw(CCanvas& canvas, VisualObjectInfo objInfo)
 {
 	canvas.SetColor(objInfo.GetColor());
 

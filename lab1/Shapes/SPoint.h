@@ -1,9 +1,9 @@
 #pragma once
-struct Point
+struct SPoint
 {
 	double x;
 	double y;
-	Point(double x, double y)
+	SPoint(double x, double y)
 		: x(x)
 		, y(y)
 	{

@@ -1,10 +1,10 @@
 #pragma once
-#include "Canvas.h"
-#include "IVisualObjectInfo.h"
+#include "CCanvas.h"
+#include "VisualObjectInfo.h"
 
 class IDrawingStrategy
 {
 public:
-	virtual void Draw(Canvas& canvas, IVisualObjectInfo objInfo) = 0;
+	virtual void Draw(CCanvas& canvas, VisualObjectInfo objInfo) = 0;
 	virtual ~IDrawingStrategy(){};
 };

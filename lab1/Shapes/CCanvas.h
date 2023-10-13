@@ -1,11 +1,11 @@
-#pragma once
+	#pragma once
 #include "ICanvas.h"
 #include <SFML/Graphics/RenderWindow.hpp>
 
-class Canvas : public gfx::ICanvas
+class CCanvas : public gfx::ICanvas
 {
 public:
-	Canvas(sf::Color color, double x, double y, sf::RenderWindow& window);
+	CCanvas(sf::Color color, double x, double y, sf::RenderWindow& window);
 	void SetColor(sf::Color newColor);
 	void MoveTo(double newX, double newY);
 	void LineTo(double x, double y);

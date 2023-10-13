@@ -139,11 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Canvas.cpp" />
+    <ClCompile Include="CCanvas.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CommandController.cpp" />
     <ClCompile Include="EllipseDrawingStrategy.cpp" />
-    <ClCompile Include="IVIsualObjectInfo.cpp" />
+    <ClCompile Include="VisualObjectInfo.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="LineDrawingStrategy.cpp" />
     <ClCompile Include="Picture.cpp" />
@@ -158,17 +158,17 @@
     <ClCompile Include="TriangleDrawingStrategy.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Canvas.h" />
+    <ClInclude Include="CCanvas.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="CommandController.h" />
     <ClInclude Include="EllipseDrawingStrategy.h" />
     <ClInclude Include="ICanvas.h" />
     <ClInclude Include="IDrawingStrategy.h" />
-    <ClInclude Include="IVisualObjectInfo.h" />
+    <ClInclude Include="VisualObjectInfo.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="LineDrawingStrategy.h" />
     <ClInclude Include="Picture.h" />
-    <ClInclude Include="Point.h" />
+    <ClInclude Include="SPoint.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="RectangleDrawingStrategy.h" />
     <ClInclude Include="Shape.h" />

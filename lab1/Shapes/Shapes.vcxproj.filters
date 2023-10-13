@@ -45,13 +45,13 @@
     <ClCompile Include="ShapeType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Canvas.cpp">
+    <ClCompile Include="CCanvas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EllipseDrawingStrategy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IVIsualObjectInfo.cpp">
+    <ClCompile Include="VisualObjectInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TextDrawingStrategy.cpp">
@@ -77,7 +77,7 @@
     <ClInclude Include="ICanvas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IVisualObjectInfo.h">
+    <ClInclude Include="VisualObjectInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="IDrawingStrategy.h">
@@ -110,10 +110,10 @@
     <ClInclude Include="ShapeType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Canvas.h">
+    <ClInclude Include="CCanvas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Point.h">
+    <ClInclude Include="SPoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TextDrawingStrategy.h">
