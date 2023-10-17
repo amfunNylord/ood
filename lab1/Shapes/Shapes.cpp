@@ -5,9 +5,14 @@
 int main()
 {
 	shape::Picture picture;
-	CommandController commandController(std::cin, std::cout, picture);
-
-	while (!std::cin.eof() && !std::cin.fail())
+	sf::RenderWindow window(sf::VideoMode(800, 600), "Shapes", sf::Style::Close);
+	window.setFramerateLimit(60);
+	CCanvas canvas(sf::Color(), 0.0, 0.0, window);
+	CommandController commandController(std::cin, std::cout, picture, window, canvas);
+	// баг с повторным вызовом drawPicture меняется цвет фона
+	while (window.isOpen())
+	{
+		while (!std::cin.eof() && !std::cin.fail())
 		{
 			std::cout << "> ";
 			if (!commandController.HandleCommand())
@@ -15,6 +20,15 @@ int main()
 				std::cout << "Unknown command!" << std::endl;
 			}
 		}
+		// check all the window's events that were triggered since the last iteration of the loop
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			// "close requested" event: we close the window
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+	}
 
 	return 0;
 }

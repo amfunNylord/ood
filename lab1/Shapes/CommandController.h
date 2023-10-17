@@ -11,7 +11,7 @@
 class CommandController
 {
 public:
-	CommandController(std::istream& input, std::ostream& output, shape::Picture& picture);
+	CommandController(std::istream& input, std::ostream& output, shape::Picture& picture, sf::RenderWindow& window, CCanvas& canvas);
 	bool HandleCommand();
 	~CommandController();
 
@@ -36,4 +36,6 @@ private:
 	const ActionMap m_actionMap;
 
 	shape::Picture m_picture;
+	sf::RenderWindow& m_window;
+	CCanvas m_canvas;
 };

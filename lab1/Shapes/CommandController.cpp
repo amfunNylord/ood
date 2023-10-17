@@ -13,10 +13,12 @@ const std::string CIRCLE_TYPE = "circle",
 
 const std::vector<std::string> AVAILABLE_TYPES = {CIRCLE_TYPE, RECTANGLE_TYPE, TRIANGLE_TYPE, LINE_TYPE, TEXT_TYPE};
 
-CommandController::CommandController(std::istream& input, std::ostream& output, shape::Picture& picture)
+CommandController::CommandController(std::istream& input, std::ostream& output, shape::Picture& picture, sf::RenderWindow& window, CCanvas& canvas)
 	: m_input(input)
 	, m_output(output)
 	, m_picture(picture)
+	, m_window(window)
+	, m_canvas(canvas)
 	, m_actionMap({
 		  { "AddShape", bind(&CommandController::AddShape, this, std::placeholders::_1) },
 		  { "List", std::bind(&CommandController::List, this) },
@@ -195,51 +197,22 @@ bool CommandController::DrawShape(std::istream& args)
 		return true;
 	}
 
-	sf::RenderWindow window(sf::VideoMode(800, 600), "Shapes", sf::Style::Close);
-	CCanvas canvas(sf::Color(), 0.0, 0.0, window);
+	drawableShape.get()->GetShapeType()->Draw(m_canvas);
 
-	window.clear(sf::Color::White);
-
-	drawableShape.get()->GetShapeType()->Draw(canvas);
-
-	window.display();
-
-	while (window.isOpen())
-	{
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-				window.close();
-		}
-	}
+	m_window.display();
 
 	return true;
 }
 
 bool CommandController::DrawPicture()
 {
-	sf::RenderWindow window(sf::VideoMode(800, 600), "Shapes", sf::Style::Close);
-	CCanvas canvas(sf::Color(), 0.0, 0.0, window);
-
-	window.clear(sf::Color::White);
-
 	for (const auto& shape : m_picture.GetAllShapes())
 	{
-		shape.get()->GetShapeType()->Draw(canvas);
+		shape.get()->GetShapeType()->Draw(m_canvas);
 	}
 
-	window.display();
+	m_window.display();
 
-	while (window.isOpen())
-	{
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-				window.close();
-		}
-	}
 	return true;
 }
 
