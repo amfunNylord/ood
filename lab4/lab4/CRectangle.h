@@ -8,7 +8,6 @@ class CRectangle : public CShape
 public:
 	CRectangle(Color color, Point leftTop, Point rightBottom, size_t index);
 	void Draw(ICanvas* canvas) override;
-	// tpdo: рисование всех фигур и тесты
 private:
 	Point m_leftTop;
 	Point m_rightBottom;
