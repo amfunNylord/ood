@@ -24,15 +24,3 @@ void CRegularPolygon::Draw(ICanvas* canvas)
 	}
 	canvas->DrawLine(vertexContainer[vertexContainer.size() - 1], vertexContainer[0]);
 }
-
-/* Нахождение всех вершин
-  int i, N = 12, X = 50, Y = 50, R = 20;
-  double angle;
-  String s = "";
-  for (i = 0; i < N; i++)
-  {
-    angle = 2*M_PI*i/N;
-    s += "x = " + String(R*cos(angle)+X) + "   y = " + String(R*sin(angle)+Y) + "\n";
-  }
-  ShowMessage(s);
-*/

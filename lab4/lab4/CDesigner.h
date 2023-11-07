@@ -9,8 +9,8 @@ class IShapeFactory;
 class CDesigner
 {
 public:
-	CDesigner(std::unique_ptr<IShapeFactory>&& factory);
-	~CDesigner();
+	CDesigner(std::unique_ptr<IShapeFactory>&& factory); // передавать ссылку
+	~CDesigner(); // исли не используем то не писать
 	CPictureDraft CreateDraft(std::istream& inputData);
 
 private:

@@ -6,7 +6,7 @@
 
 #include <stdexcept>
 #include <sstream>
-
+// разбить на отдельные функции
 std::unique_ptr<CShape> CShapeFactory::CreateShape(const std::string& description)
 {
 	m_countOfCreatedShapes++;
