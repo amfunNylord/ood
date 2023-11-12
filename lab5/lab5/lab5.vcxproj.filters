@@ -86,9 +86,6 @@
     <ClInclude Include="ICommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ICommand_fwd.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="IDocument.h">
       <Filter>Header Files</Filter>
     </ClInclude>

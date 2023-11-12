@@ -2,15 +2,6 @@
 #include "History.h"
 #include "ICommand.h"
 
-CHistory::CHistory()
-{
-}
-
-
-CHistory::~CHistory()
-{
-}
-
 bool CHistory::CanUndo() const
 {
 	return m_nextCommandIndex != 0;

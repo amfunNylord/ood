@@ -1,6 +1,5 @@
 #pragma once
-
-#include "ICommand_fwd.h"
+#include <memory>
 
 class ICommand
 {
@@ -10,3 +9,5 @@ public:
 
 	virtual ~ICommand() = default;
 };
+
+typedef std::unique_ptr<ICommand> ICommandPtr;

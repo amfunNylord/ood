@@ -159,7 +159,6 @@
     <ClInclude Include="DocumentSaver.h" />
     <ClInclude Include="History.h" />
     <ClInclude Include="ICommand.h" />
-    <ClInclude Include="ICommand_fwd.h" />
     <ClInclude Include="IDocument.h" />
     <ClInclude Include="IDocumentSaver.h" />
     <ClInclude Include="IImage.h" />

@@ -1,15 +1,12 @@
 #pragma once
 
-#include "ICommand_fwd.h"
+#include "ICommand.h"
 #include <deque>
 
 
 class CHistory
 {
 public:
-	CHistory();
-	~CHistory();
-
 	bool CanUndo()const;	
 	void Undo();
 	bool CanRedo()const;
