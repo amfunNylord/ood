@@ -1,13 +1,14 @@
 #pragma once
 #include "IDocument.h"
 #include "History.h"
+#include "IDocumentSaver.h"
 
 #include <vector>
 
 class CDocument : public IDocument
 {
 public:
-	CDocument(CHistory& history);
+	CDocument(CHistory& history, const std::shared_ptr<IDocumentSaver>& documentSaver);
 	void SetTitle(const std::string & title) override;
 	std::string GetTitle() const override;
 
@@ -20,6 +21,8 @@ public:
 	std::shared_ptr<IImage> InsertImage(const std::string& path, int width, int height, 
 										const std::optional<size_t>& position = std::nullopt) override;
 
+	void Save(const std::string& path) const override;
+
 	size_t GetItemsCount() const override;
 	CConstDocumentItem GetItem(size_t index) const override;
 	CDocumentItem GetItem(size_t index) override;
@@ -31,4 +34,5 @@ private:
 	std::vector<CDocumentItem> m_documentItems;
 	std::string m_title = "Untilted";
 	CHistory& m_history;
+	std::shared_ptr<IDocumentSaver> m_documentSaver;
 };

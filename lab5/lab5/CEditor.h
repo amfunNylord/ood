@@ -10,7 +10,7 @@ using namespace std::placeholders;
 class CEditor
 {
 public:
-	CEditor(CHistory& history);
+	CEditor(CHistory& history, const std::shared_ptr<IDocumentSaver>& documentSaver);
 
 	void Start();
 
@@ -38,6 +38,8 @@ private:
 	void InsertImage(istream& in);
 
 	void ResizeImage(istream& in);
+
+	void Save(istream& in);
 
 	CMenu m_menu;
 	unique_ptr<IDocument> m_document;

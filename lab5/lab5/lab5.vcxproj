@@ -138,6 +138,7 @@
     <ClCompile Include="DeleteItemCommand.cpp" />
     <ClCompile Include="Document.cpp" />
     <ClCompile Include="DocumentItem.cpp" />
+    <ClCompile Include="DocumentSaver.cpp" />
     <ClCompile Include="History.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="InsertParagraphCommand.cpp" />
@@ -155,10 +156,12 @@
     <ClInclude Include="DeleteItemCommand.h" />
     <ClInclude Include="Document.h" />
     <ClInclude Include="DocumentItem.h" />
+    <ClInclude Include="DocumentSaver.h" />
     <ClInclude Include="History.h" />
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="ICommand_fwd.h" />
     <ClInclude Include="IDocument.h" />
+    <ClInclude Include="IDocumentSaver.h" />
     <ClInclude Include="IImage.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="InsertDocumentItemCommand.h" />

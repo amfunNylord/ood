@@ -4,8 +4,8 @@ const std::string POS_END = "end";
 const int MIN_IMAGE_SIZE = 1;
 const int MAX_IMAGE_SIZE = 10000;
 
-CEditor::CEditor(CHistory& history)
-	: m_document(make_unique<CDocument>(history))
+CEditor::CEditor(CHistory& history, const std::shared_ptr<IDocumentSaver>& documentSaver)
+	: m_document(make_unique<CDocument>(history, documentSaver))
 {
 	m_menu.AddItem("help", "Help", [this](istream&) { m_menu.ShowInstructions(); });
 	m_menu.AddItem("exit", "Exit", [this](istream&) { m_menu.Exit(); });
@@ -18,6 +18,7 @@ CEditor::CEditor(CHistory& history)
 	AddMenuItem("deleteItem", "Deletes document item in given position. Args: <position>", &CEditor::DeleteItem);
 	AddMenuItem("insertImage", "Inserts image with given width, height and path in given position. Args: <position>|end <width> <height> <path>", &CEditor::InsertImage);
 	AddMenuItem("resizeImage", "Change width and height of the image in given position. Args: <position> <width> <height>", &CEditor::ResizeImage);
+	AddMenuItem("save", "Saves document as HTML file. Args: <path>", &CEditor::Save);
 }
 
 void CEditor::Start()
@@ -190,4 +191,12 @@ void CEditor::ResizeImage(istream& in)
 	{
 		std::cout << "Item in this position isn't image" << std::endl;
 	}
+}
+
+void CEditor::Save(istream& in)
+{
+	std::string path;
+	in >> path;
+
+	m_document->Save(path);
 }

@@ -8,8 +8,9 @@
 
 using namespace std;
 
-CDocument::CDocument(CHistory& history)
+CDocument::CDocument(CHistory& history, const std::shared_ptr<IDocumentSaver>& documentSaver)
 	: m_history(history)
+	, m_documentSaver(documentSaver)
 {
 }
 
@@ -87,4 +88,9 @@ std::shared_ptr<IImage> CDocument::InsertImage(const std::string& path, int widt
 	shared_ptr<CDocumentItem> item = std::make_shared<CDocumentItem>(std::move(image));
 	m_history.AddAndExecuteCommand(make_unique<CInsertDocumentItemCommand>(m_documentItems, std::move(item), position));
 	return image;
+}
+
+void CDocument::Save(const std::string& path) const
+{
+	m_documentSaver->Save(path, this);
 }

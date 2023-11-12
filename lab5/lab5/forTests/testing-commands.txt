@@ -1,0 +1,2 @@
+insertImage 1 400 400 C:\projects\ood\lab5\lab5\forTests\sauron.jpg
+save C:\projects\ood\lab5\lab5\forTests
