@@ -15,114 +15,117 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="lab5.cpp">
+    <ClCompile Include="lab5_tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AbstractCommand.cpp">
+    <ClCompile Include="..\lab5\AbstractCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ChangeStringCommand.cpp">
+    <ClCompile Include="..\lab5\CEditor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ConstDocumentItem.cpp">
+    <ClCompile Include="..\lab5\ChangeStringCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Document.cpp">
+    <ClCompile Include="..\lab5\ConstDocumentItem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DocumentItem.cpp">
+    <ClCompile Include="..\lab5\DeleteItemCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="History.cpp">
+    <ClCompile Include="..\lab5\Document.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Image.cpp">
+    <ClCompile Include="..\lab5\DocumentItem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Menu.cpp">
+    <ClCompile Include="..\lab5\DocumentSaver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Paragraph.cpp">
+    <ClCompile Include="..\lab5\History.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="stdafx.cpp">
+    <ClCompile Include="..\lab5\Image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CEditor.cpp">
+    <ClCompile Include="..\lab5\InsertDocumentItemCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="InsertDocumentItemCommand.cpp">
+    <ClCompile Include="..\lab5\Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DeleteItemCommand.cpp">
+    <ClCompile Include="..\lab5\Paragraph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ResizeImageCommand.cpp">
+    <ClCompile Include="..\lab5\ResizeImageCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DocumentSaver.cpp">
+    <ClCompile Include="..\lab5\stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AbstractCommand.h">
+    <ClInclude Include="..\lab5\AbstractCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ChangeStringCommand.h">
+    <ClInclude Include="..\lab5\CEditor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ConstDocumentItem.h">
+    <ClInclude Include="..\lab5\ChangeStringCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Document.h">
+    <ClInclude Include="..\lab5\ConstDocumentItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DocumentItem.h">
+    <ClInclude Include="..\lab5\DeleteItemCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="History.h">
+    <ClInclude Include="..\lab5\Document.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ICommand.h">
+    <ClInclude Include="..\lab5\DocumentItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IDocument.h">
+    <ClInclude Include="..\lab5\DocumentSaver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IImage.h">
+    <ClInclude Include="..\lab5\History.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Image.h">
+    <ClInclude Include="..\lab5\ICommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IParagraph.h">
+    <ClInclude Include="..\lab5\ICommand_fwd.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.h">
+    <ClInclude Include="..\lab5\IDocument.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Paragraph.h">
+    <ClInclude Include="..\lab5\IDocumentSaver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="stdafx.h">
+    <ClInclude Include="..\lab5\IImage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CEditor.h">
+    <ClInclude Include="..\lab5\Image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="InsertDocumentItemCommand.h">
+    <ClInclude Include="..\lab5\InsertDocumentItemCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DeleteItemCommand.h">
+    <ClInclude Include="..\lab5\IParagraph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ResizeImageCommand.h">
+    <ClInclude Include="..\lab5\Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IDocumentSaver.h">
+    <ClInclude Include="..\lab5\Paragraph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DocumentSaver.h">
+    <ClInclude Include="..\lab5\ResizeImageCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lab5\stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

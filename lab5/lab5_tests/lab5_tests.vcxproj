@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{6db4d5cd-5260-41af-8310-6df8a219d1f9}</ProjectGuid>
-    <RootNamespace>lab5</RootNamespace>
+    <ProjectGuid>{eb3ac03a-575b-40a9-bf25-fb28cb5ca8c1}</ProjectGuid>
+    <RootNamespace>lab5tests</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -131,44 +131,45 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AbstractCommand.cpp" />
-    <ClCompile Include="CEditor.cpp" />
-    <ClCompile Include="ChangeStringCommand.cpp" />
-    <ClCompile Include="ConstDocumentItem.cpp" />
-    <ClCompile Include="DeleteItemCommand.cpp" />
-    <ClCompile Include="Document.cpp" />
-    <ClCompile Include="DocumentItem.cpp" />
-    <ClCompile Include="DocumentSaver.cpp" />
-    <ClCompile Include="History.cpp" />
-    <ClCompile Include="Image.cpp" />
-    <ClCompile Include="InsertDocumentItemCommand.cpp" />
-    <ClCompile Include="lab5.cpp" />
-    <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="Paragraph.cpp" />
-    <ClCompile Include="ResizeImageCommand.cpp" />
-    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="..\lab5\AbstractCommand.cpp" />
+    <ClCompile Include="..\lab5\CEditor.cpp" />
+    <ClCompile Include="..\lab5\ChangeStringCommand.cpp" />
+    <ClCompile Include="..\lab5\ConstDocumentItem.cpp" />
+    <ClCompile Include="..\lab5\DeleteItemCommand.cpp" />
+    <ClCompile Include="..\lab5\Document.cpp" />
+    <ClCompile Include="..\lab5\DocumentItem.cpp" />
+    <ClCompile Include="..\lab5\DocumentSaver.cpp" />
+    <ClCompile Include="..\lab5\History.cpp" />
+    <ClCompile Include="..\lab5\Image.cpp" />
+    <ClCompile Include="..\lab5\InsertDocumentItemCommand.cpp" />
+    <ClCompile Include="..\lab5\Menu.cpp" />
+    <ClCompile Include="..\lab5\Paragraph.cpp" />
+    <ClCompile Include="..\lab5\ResizeImageCommand.cpp" />
+    <ClCompile Include="..\lab5\stdafx.cpp" />
+    <ClCompile Include="lab5_tests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AbstractCommand.h" />
-    <ClInclude Include="CEditor.h" />
-    <ClInclude Include="ChangeStringCommand.h" />
-    <ClInclude Include="ConstDocumentItem.h" />
-    <ClInclude Include="DeleteItemCommand.h" />
-    <ClInclude Include="Document.h" />
-    <ClInclude Include="DocumentItem.h" />
-    <ClInclude Include="DocumentSaver.h" />
-    <ClInclude Include="History.h" />
-    <ClInclude Include="ICommand.h" />
-    <ClInclude Include="IDocument.h" />
-    <ClInclude Include="IDocumentSaver.h" />
-    <ClInclude Include="IImage.h" />
-    <ClInclude Include="Image.h" />
-    <ClInclude Include="InsertDocumentItemCommand.h" />
-    <ClInclude Include="IParagraph.h" />
-    <ClInclude Include="Menu.h" />
-    <ClInclude Include="Paragraph.h" />
-    <ClInclude Include="ResizeImageCommand.h" />
-    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="..\lab5\AbstractCommand.h" />
+    <ClInclude Include="..\lab5\CEditor.h" />
+    <ClInclude Include="..\lab5\ChangeStringCommand.h" />
+    <ClInclude Include="..\lab5\ConstDocumentItem.h" />
+    <ClInclude Include="..\lab5\DeleteItemCommand.h" />
+    <ClInclude Include="..\lab5\Document.h" />
+    <ClInclude Include="..\lab5\DocumentItem.h" />
+    <ClInclude Include="..\lab5\DocumentSaver.h" />
+    <ClInclude Include="..\lab5\History.h" />
+    <ClInclude Include="..\lab5\ICommand.h" />
+    <ClInclude Include="..\lab5\ICommand_fwd.h" />
+    <ClInclude Include="..\lab5\IDocument.h" />
+    <ClInclude Include="..\lab5\IDocumentSaver.h" />
+    <ClInclude Include="..\lab5\IImage.h" />
+    <ClInclude Include="..\lab5\Image.h" />
+    <ClInclude Include="..\lab5\InsertDocumentItemCommand.h" />
+    <ClInclude Include="..\lab5\IParagraph.h" />
+    <ClInclude Include="..\lab5\Menu.h" />
+    <ClInclude Include="..\lab5\Paragraph.h" />
+    <ClInclude Include="..\lab5\ResizeImageCommand.h" />
+    <ClInclude Include="..\lab5\stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

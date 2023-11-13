@@ -32,7 +32,7 @@ public:
 
 private:
 	std::vector<CDocumentItem> m_documentItems;
-	std::string m_title = "Untilted";
+	std::string m_title = "Untitled";
 	CHistory& m_history;
 	std::shared_ptr<IDocumentSaver> m_documentSaver;
 };
