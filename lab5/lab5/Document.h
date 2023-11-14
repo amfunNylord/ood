@@ -11,7 +11,9 @@ public:
 	CDocument(CHistory& history, const std::shared_ptr<IDocumentSaver>& documentSaver);
 	void SetTitle(const std::string & title) override;
 	std::string GetTitle() const override;
-
+	// либо убрать методы либо создавать историю в документе
+	// ограничить историю 10 командами
+	// нужно сразу копировать картинку при вставке можно временную папку 
 	bool CanUndo() const override;	
 	void Undo() override;
 	bool CanRedo() const override;
