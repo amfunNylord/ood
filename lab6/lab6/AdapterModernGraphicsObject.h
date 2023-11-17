@@ -2,10 +2,10 @@
 #include "modern_graphics_lib.h"
 #include "graphics_lib.h"
 
-class CAdapterModernGraphics : public graphics_lib::ICanvas
+class CAdapterModernGraphicsObject : public graphics_lib::ICanvas
 {
 public:
-	CAdapterModernGraphics(modern_graphics_lib::CModernGraphicsRenderer& renderer);
+	CAdapterModernGraphicsObject(modern_graphics_lib::CModernGraphicsRenderer& renderer);
 	void MoveTo(int x, int y) override;
 	void LineTo(int x, int y) override;
 

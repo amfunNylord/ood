@@ -18,7 +18,10 @@
     <ClCompile Include="lab6.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AdapterModernGraphics.cpp">
+    <ClCompile Include="AdapterModernGraphicsObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AdapterModernGraphicsClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,7 +44,10 @@
     <ClInclude Include="modern_graphics_lib_pro.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AdapterModernGraphics.h">
+    <ClInclude Include="AdapterModernGraphicsObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AdapterModernGraphicsClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

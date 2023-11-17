@@ -18,14 +18,14 @@
     <ClCompile Include="lab6_tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\lab6\AdapterModernGraphics.cpp">
+    <ClCompile Include="..\lab6\AdapterModernGraphicsObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lab6\AdapterModernGraphicsClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\lab6\AdapterModernGraphics.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\lab6\graphics_lib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -33,6 +33,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\lab6\shape_drawing_lib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lab6\AdapterModernGraphicsObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lab6\AdapterModernGraphicsClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -127,11 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\lab6\AdapterModernGraphics.cpp" />
+    <ClCompile Include="..\lab6\AdapterModernGraphicsClass.cpp" />
+    <ClCompile Include="..\lab6\AdapterModernGraphicsObject.cpp" />
     <ClCompile Include="lab6_tests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\lab6\AdapterModernGraphics.h" />
+    <ClInclude Include="..\lab6\AdapterModernGraphicsClass.h" />
+    <ClInclude Include="..\lab6\AdapterModernGraphicsObject.h" />
     <ClInclude Include="..\lab6\graphics_lib.h" />
     <ClInclude Include="..\lab6\modern_graphics_lib.h" />
     <ClInclude Include="..\lab6\shape_drawing_lib.h" />

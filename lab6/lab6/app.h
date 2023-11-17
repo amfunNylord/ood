@@ -1,7 +1,8 @@
 #pragma once
 #include "shape_drawing_lib.h"
 #include "modern_graphics_lib.h"
-#include "AdapterModernGraphics.h"
+#include "AdapterModernGraphicsObject.h"
+#include "AdapterModernGraphicsClass.h"
 
 // Пространство имен приложения (доступно для модификации)
 namespace app
@@ -34,10 +35,20 @@ void PaintPictureOnModernGraphicsRenderer()
 	// TODO: при помощи существующей функции PaintPicture() нарисовать
 	// картину на renderer
 	// Подсказка: используйте паттерн "Адаптер"
-	CAdapterModernGraphics adapter(renderer);
+	std::cout << "Using object adapter" << std::endl;
+
+	CAdapterModernGraphicsObject objectAdapter(renderer);
 	renderer.BeginDraw();
-	shape_drawing_lib::CCanvasPainter painter(adapter);
-	PaintPicture(painter);
+	shape_drawing_lib::CCanvasPainter objectPainter(objectAdapter);
+	PaintPicture(objectPainter);
 	renderer.EndDraw();
+
+	std::cout << "Using class adapter" << std::endl;
+
+	// Class Adapter solution
+	CAdapterModernGraphicsClass classAdapter(std::cout);
+	shape_drawing_lib::CCanvasPainter classPainter(classAdapter);
+	PaintPicture(classPainter);
+
 }
 } // namespace app

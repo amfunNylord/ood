@@ -131,11 +131,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AdapterModernGraphics.cpp" />
+    <ClCompile Include="AdapterModernGraphicsClass.cpp" />
+    <ClCompile Include="AdapterModernGraphicsObject.cpp" />
     <ClCompile Include="lab6.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AdapterModernGraphics.h" />
+    <ClInclude Include="AdapterModernGraphicsClass.h" />
+    <ClInclude Include="AdapterModernGraphicsObject.h" />
     <ClInclude Include="app.h" />
     <ClInclude Include="graphics_lib.h" />
     <ClInclude Include="graphics_lib_pro.h" />
