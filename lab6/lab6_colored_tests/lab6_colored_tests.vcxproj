@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{71e9c9fc-400b-4400-8943-c293b537ea7a}</ProjectGuid>
-    <RootNamespace>lab6</RootNamespace>
+    <ProjectGuid>{d4e49ae2-716d-4dd3-80aa-1698cb60bdee}</ProjectGuid>
+    <RootNamespace>lab6coloredtests</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -76,7 +76,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -91,7 +90,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -106,7 +104,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -121,7 +118,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -131,17 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AdapterModernGraphicsClass.cpp" />
-    <ClCompile Include="AdapterModernGraphicsObject.cpp" />
-    <ClCompile Include="lab6.cpp" />
+    <ClCompile Include="..\lab6_colored\AdapterModernGraphicsClassPro.cpp" />
+    <ClCompile Include="..\lab6_colored\AdapterModernGraphicsObjectPro.cpp" />
+    <ClCompile Include="lab6_colored_tests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AdapterModernGraphicsClass.h" />
-    <ClInclude Include="AdapterModernGraphicsObject.h" />
-    <ClInclude Include="app.h" />
-    <ClInclude Include="graphics_lib.h" />
-    <ClInclude Include="modern_graphics_lib.h" />
-    <ClInclude Include="shape_drawing_lib.h" />
+    <ClInclude Include="..\lab6_colored\AdapterModernGraphicsClassPro.h" />
+    <ClInclude Include="..\lab6_colored\AdapterModernGraphicsObjectPro.h" />
+    <ClInclude Include="..\lab6_colored\app.h" />
+    <ClInclude Include="..\lab6_colored\graphics_lib_pro.h" />
+    <ClInclude Include="..\lab6_colored\modern_graphics_lib_pro.h" />
+    <ClInclude Include="..\lab6_colored\shape_drawing_lib.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -15,33 +15,33 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="lab6.cpp">
+    <ClCompile Include="lab6_colored_tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AdapterModernGraphicsObject.cpp">
+    <ClCompile Include="..\lab6_colored\AdapterModernGraphicsClassPro.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AdapterModernGraphicsClass.cpp">
+    <ClCompile Include="..\lab6_colored\AdapterModernGraphicsObjectPro.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="graphics_lib.h">
+    <ClInclude Include="..\lab6_colored\AdapterModernGraphicsClassPro.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="shape_drawing_lib.h">
+    <ClInclude Include="..\lab6_colored\AdapterModernGraphicsObjectPro.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="modern_graphics_lib.h">
+    <ClInclude Include="..\lab6_colored\app.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="app.h">
+    <ClInclude Include="..\lab6_colored\graphics_lib_pro.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AdapterModernGraphicsObject.h">
+    <ClInclude Include="..\lab6_colored\modern_graphics_lib_pro.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AdapterModernGraphicsClass.h">
+    <ClInclude Include="..\lab6_colored\shape_drawing_lib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

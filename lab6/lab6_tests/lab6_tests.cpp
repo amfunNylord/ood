@@ -9,7 +9,7 @@ SCENARIO("Object adapter tests")
 {
 	std::ostringstream output;
 	modern_graphics_lib::CModernGraphicsRenderer renderer(output);
-	WHEN("We want to draw line from default start point to point with coordinates (100, 100)")
+	WHEN("We want to draw line from the default start point to point with coordinates (100, 100)")
 	{
 		CAdapterModernGraphicsObject adapter(renderer);
 		renderer.BeginDraw();
@@ -22,7 +22,7 @@ SCENARIO("Object adapter tests")
 									"</draw>\n");
 		}
 	}
-	WHEN("We want to draw line from custom start point (20, 20) to point with coordinates (200, 300)")
+	WHEN("We want to draw line from the custom start point (20, 20) to point with coordinates (200, 300)")
 	{
 		CAdapterModernGraphicsObject adapter(renderer);
 		renderer.BeginDraw();
