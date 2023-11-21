@@ -16,5 +16,5 @@ void CAdapterModernGraphicsObject::MoveTo(int x, int y)
 void CAdapterModernGraphicsObject::LineTo(int x, int y)
 {
 	m_renderer.DrawLine(m_currPoint, { x, y });
-	this->MoveTo(x, y);
+	MoveTo(x, y);
 }

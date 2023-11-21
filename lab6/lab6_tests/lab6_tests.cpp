@@ -15,7 +15,7 @@ SCENARIO("Object adapter tests")
 		renderer.BeginDraw();
 		adapter.LineTo(100, 100);
 		renderer.EndDraw();
-		THEN("We get right message of drawing line")
+		THEN("We get right message of drawing line") // тогда рисуется линия наши действия ожидаемый результат
 		{
 			REQUIRE(output.str() == "<draw>\n"
 									"  <line fromX=\"0\" fromY=\"0\" toX=\"100\" toY=\"100\"/>\n"

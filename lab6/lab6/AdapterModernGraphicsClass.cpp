@@ -22,6 +22,6 @@ void CAdapterModernGraphicsClass::MoveTo(int x, int y)
 void CAdapterModernGraphicsClass::LineTo(int x, int y)
 {
 	DrawLine(m_currPoint, { x, y });
-	this->MoveTo(x, y);
+	MoveTo(x, y);
 }
 
