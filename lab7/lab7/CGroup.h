@@ -7,6 +7,7 @@
 class CGroup : public IGroup
 {
 public:
+	CGroup();
 	std::optional<RectD> GetFrame() override;
 	void SetFrame(const RectD& rect) override;
 

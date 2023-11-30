@@ -38,6 +38,27 @@ void CGroup::RemoveShapeAtIndex(size_t index)
 	m_shapes.erase(m_shapes.begin() + index);
 }
 
+CGroup::CGroup()
+{
+	BorderGroupEnumerator borderGroupEnumerator = [this](BorderStyleEnumerator styleEnumerator) {
+		for (const auto& shape : m_shapes)
+		{
+			styleEnumerator(*shape->GetLineStyle());
+		}
+	};
+
+	m_borderStyle = std::make_shared<CGroupBorderStyle>(borderGroupEnumerator);
+
+	FillGroupEnumerator fillGroupEnumerator = [this](StyleCallback StyleCallback) {
+		for (const auto& shape : m_shapes)
+		{
+			StyleCallback(*shape->GetFillStyle());
+		}
+	};
+
+	m_fillStyle = std::make_shared<CGroupFillStyle>(fillGroupEnumerator);
+}
+
 std::optional<RectD> CGroup::GetFrame()
 {
 	if (m_shapes.empty())
