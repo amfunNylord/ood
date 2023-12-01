@@ -11,9 +11,6 @@ public:
 							 std::optional<RGBAColor> borderColor, std::optional<RGBAColor> fillColor, 
 							 std::optional<double> thickness) = 0;
 	virtual void FillPolygon(const std::vector<PointD> vertexes, RGBAColor fillColor) = 0;
-	/*virtual void SetFillColor() = 0;
-	virtual void SetLineColor() = 0;
-	virtual void SetLineThickness() = 0;*/
 
 	~ICanvas() = default;
 };
