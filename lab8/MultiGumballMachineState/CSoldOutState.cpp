@@ -1,6 +1,6 @@
 #include "CSoldOutState.h"
 
-CSoldOutState::CSoldOutState(IGumballMachine& gumballMachine)
+CSoldOutState::CSoldOutState(IMultiGumballMachine& gumballMachine)
 	: m_gumballMachine(gumballMachine)
 {
 }
@@ -12,7 +12,15 @@ void CSoldOutState::InsertQuarter()
 
 void CSoldOutState::EjectQuarter()
 {
-	std::cout << "You can't eject, you haven't inserted a quarter yet\n";
+	if (m_gumballMachine.GetQuarterCount() != 0)
+	{
+		std::cout << "Quarter" << (m_gumballMachine.GetQuarterCount() > 1 ? "s" : "") << " returned" << std::endl;
+		m_gumballMachine.SetQuarterCount(0);
+	}
+	else
+	{
+		std::cout << "You can't eject, you haven't inserted a quarter yet" << std::endl;
+	}
 }
 
 void CSoldOutState::TurnCrank()

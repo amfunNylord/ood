@@ -1,11 +1,11 @@
 #pragma once
-#include "IGumballMachine.h"
+#include "IMultiGumballMachine.h"
 #include "IState.h"
 
-class CNoQuarterState : public IState
+class CSoldOutState : public IState
 {
 public:
-	CNoQuarterState(IGumballMachine& gumballMachine);
+	CSoldOutState(IMultiGumballMachine& gumballMachine);
 
 	void InsertQuarter() override;
 	void EjectQuarter() override;
@@ -14,5 +14,5 @@ public:
 	std::string ToString() const override;
 
 private:
-	IGumballMachine& m_gumballMachine;
+	IMultiGumballMachine& m_gumballMachine;
 };

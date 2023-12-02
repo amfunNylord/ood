@@ -1,6 +1,6 @@
 #include "CNoQuarterState.h"
 
-CNoQuarterState::CNoQuarterState(IGumballMachine& gumballMachine)
+CNoQuarterState::CNoQuarterState(IMultiGumballMachine& gumballMachine)
 	: m_gumballMachine(gumballMachine)
 {
 }
@@ -8,6 +8,7 @@ CNoQuarterState::CNoQuarterState(IGumballMachine& gumballMachine)
 void CNoQuarterState::InsertQuarter()
 {
 	std::cout << "You inserted a quarter\n";
+	m_gumballMachine.SetQuarterCount(m_gumballMachine.GetQuarterCount() + 1);
 	m_gumballMachine.SetHasQuarterState();
 }
 
