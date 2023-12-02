@@ -144,8 +144,6 @@ SCENARIO("CSoldOutState test all functions")
 	}
 }
 
-// gumball mahcine + soldstate
-
 SCENARIO("CSoldState test all functions")
 {
 	GIVEN("Gumball machine with ")

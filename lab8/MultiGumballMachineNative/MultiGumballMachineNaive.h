@@ -22,6 +22,11 @@ public:
 		: m_count(count)
 		, m_state(count > 0 ? State::NoQuarter : State::SoldOut)
 	{
+		if (m_count == -1)
+		{
+			m_state = State::Sold;
+			m_count = 1;
+		}
 	}
 
 	void InsertQuarter()
@@ -120,9 +125,11 @@ public:
 	{
 		std::string state = (m_state == State::SoldOut) ? "sold out" : 
 							(m_state == State::NoQuarter) ? "waiting for quarter" : 
-							(m_state == State::HasQuarter) ? "waiting for turn of crank" : "delivering a gumball";
+							(m_state == State::HasQuarter) ? "waiting for turn of crank" : 
+							(m_state == State::HasMaxQuarters) ? "full of quarters" : "delivering a gumball";
 		auto fmt = "Mighty Gumball, Inc.\nC++-enabled Standing Gumball Model #2016 (with state)\nInventory: " + 
-				   std::to_string(m_count) + " gumball" + (m_count != 1 ? "s" : "") + "\nMachine is " + state;
+				   std::to_string(m_count) + " gumball" + (m_count != 1 ? "s" : "") + "\nQuarters count: " + 
+			       std::to_string(m_quartersCount) + "\nMachine is " + state;
 		return fmt;
 	}
 

@@ -13,6 +13,11 @@ CMultiGumballMachine::CMultiGumballMachine(unsigned numBalls)
 	{
 		m_state = &m_noQuarterState;
 	}
+	if (m_count == -1)
+	{
+		m_state = &m_soldState;
+		m_count = 1;
+	}
 }
 
 void CMultiGumballMachine::EjectQuarter()
@@ -34,7 +39,8 @@ void CMultiGumballMachine::TurnCrank()
 std::string CMultiGumballMachine::ToString() const
 {
 	std::string str = "Mighty Gumball, Inc.\nC++-enabled Standing Gumball Model #2016 (with state)\nInventory: " + 
-					  std::to_string(m_count) + " gumball" + (m_count != 1 ? "s" : "") + "\nMachine is " + m_state->ToString();
+					  std::to_string(m_count) + " gumball" + (m_count != 1 ? "s" : "") + "\nQuarters count: " + 
+		              std::to_string(m_quartersCount) + "\nMachine is " + m_state->ToString();
 	return str;
 }
 
