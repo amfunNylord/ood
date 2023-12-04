@@ -1,7 +1,8 @@
 #pragma once
 
-struct IMultiGumballMachine
+class IMultiGumballMachine
 {
+public:
 	virtual void ReleaseBall() = 0;
 	virtual unsigned GetBallCount() const = 0;
 	virtual unsigned GetQuarterCount() const = 0;
