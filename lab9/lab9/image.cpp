@@ -24,11 +24,17 @@ Image::Image(Size size, char color)
 	int tileCountX = (m_width + Tile::SIZE - 1) / Tile::SIZE;
 	int tileCountY = (m_height + Tile::SIZE - 1) / Tile::SIZE;
 
+	CoW<Tile> defaultTile = CoW<Tile>(color);
+
 	m_tiles.resize(tileCountY);
 
 	for (int i = 0; i < tileCountY; i++)
 	{
-		m_tiles[i].resize(tileCountX, CoW<Tile>(color));
+		m_tiles[i].resize(tileCountX);
+		for (int j = 0; j < tileCountX; j++)
+		{
+			m_tiles[i][j] = defaultTile;
+		}
 	}
 }
 
