@@ -14,7 +14,7 @@ void CHasMaxQuartersState::EjectQuarter()
 {
 	std::cout << "Quarter" << (m_gumballMachine.GetQuarterCount() > 1 ? "s" : "") << " returned" << std::endl;
 	m_gumballMachine.SetQuarterCount(0);
-	m_gumballMachine.SetNoQuarterState();
+	m_gumballMachine.SetNoQuarterState();  // может не быть шариков
 }
 
 void CHasMaxQuartersState::TurnCrank()
