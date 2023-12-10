@@ -6,7 +6,7 @@
 #include "CSoldOutState.h"
 #include "CSoldState.h"
 #include <string>
-// вы€снить дл€ чего private
+
 class CGumballMachine : private IGumballMachine
 {
 public:

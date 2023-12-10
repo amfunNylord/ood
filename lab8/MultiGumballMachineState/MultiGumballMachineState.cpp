@@ -40,7 +40,7 @@ void TestNaiveMultiGumballMachine()
 	CMultiGumballMachine m(5);
 	TestMultiGumballMachine(m);
 }
-// подумать уменьшить ли количество состояний
+
 int main()
 {
 	TestNaiveMultiGumballMachine();

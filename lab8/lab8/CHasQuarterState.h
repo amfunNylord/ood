@@ -2,7 +2,6 @@
 #include "IState.h"
 #include "IGumballMachine.h"
 
-// вы€снить дл€ чего public
 class CHasQuarterState : public IState
 {
 public:

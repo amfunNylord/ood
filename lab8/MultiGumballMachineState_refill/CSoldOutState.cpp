@@ -32,7 +32,7 @@ void CSoldOutState::AddBalls(unsigned count)
 {
 	std::cout << "You added balls" << std::endl;
 	m_gumballMachine.RefillBalls(count);
-	m_gumballMachine.SetNoQuarterState(); // не факт что noQuarter
+	m_gumballMachine.SetNoQuarterState();
 }
 
 void CSoldOutState::Dispense()
