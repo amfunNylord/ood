@@ -72,7 +72,7 @@ uint32_t Image::GetPixel(Point p) const noexcept
 void Image::SetPixel(Point p, uint32_t color)
 {
 	/* Реализуйте метод самостоятельно. */
-	if (p.x >= 0 && p.x < m_width && p.y >= 0 && p.y < m_height)
+	if (IsPointInSize(p, { m_width, m_height }))
 	{
 		int tilePosY = p.y / Tile::SIZE;
 		int tilePosX = p.x / Tile::SIZE;
