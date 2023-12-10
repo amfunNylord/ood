@@ -1,6 +1,6 @@
 #include "drawer.h"
-#include <cstdlib>
 #include <cassert>
+#include <cstdlib>
 
 namespace
 {
@@ -105,5 +105,64 @@ void DrawLine(Image& image, Point from, Point to, char color)
 	else
 	{ // Отрезок пологий.
 		DrawSlopeLine(image, from, to, color);
+	}
+}
+
+void DrawCircle(Image& image, Point center, int radius, char color)
+{
+	int x = 0;
+	int y = radius;
+	int delta = 1 - 2 * radius;
+	int error = 0;
+	while (y >= x)
+	{
+		image.SetPixel({ center.x + x, center.y + y }, color);
+		image.SetPixel({ center.x + x, center.y - y }, color);
+		image.SetPixel({ center.x - x, center.y + y }, color);
+		image.SetPixel({ center.x - x, center.y - y }, color);
+		image.SetPixel({ center.x + y, center.y + x }, color);
+		image.SetPixel({ center.x + y, center.y - x }, color);
+		image.SetPixel({ center.x - y, center.y + x }, color);
+		image.SetPixel({ center.x - y, center.y - x }, color);
+		error = 2 * (delta + y) - 1;
+		if ((delta < 0) && (error <= 0))
+		{
+			delta += 2 * ++x + 1;
+			continue;
+		}
+		if ((delta > 0) && (error > 0))
+		{
+			delta -= 2 * --y + 1;
+			continue;
+		}
+		delta += 2 * (++x - --y);
+	}
+}
+
+void FillCircle(Image& image, Point center, int radius, char color)
+{
+	int x = 0;
+	int y = radius;
+	int delta = 1 - 2 * radius;
+	int error = 0;
+	while (y >= 0)
+	{
+		DrawLine(image, { center.x + x, center.y + y }, { center.x - x, center.y + y }, color);
+		DrawLine(image, { center.x + x, center.y - y }, { center.x - x, center.y - y }, color);
+		error = 2 * (delta + y) - 1;
+		if ((delta < 0) && (error <= 0))
+		{
+			delta += 2 * ++x + 1;
+			continue;
+		}
+		error = 2 * (delta - x) - 1;
+		if ((delta > 0) && (error > 0))
+		{
+			delta += 1 - 2 * --y;
+			continue;
+		}
+		x++;
+		delta += 2 * (x - y);
+		y--;
 	}
 }

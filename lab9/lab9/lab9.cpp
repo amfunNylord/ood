@@ -41,4 +41,20 @@ int main()
 			"....##########......\n");
 		Print(img, std::cout);
 	}
+
+	{
+		Image img{ { 31, 31 }, '.' };
+
+		DrawCircle(img, { 15, 15 }, 10, '#');
+		
+		Print(img, std::cout);
+	}
+
+	{
+		Image img{ { 31, 31 }, '.' };
+
+		FillCircle(img, { 15, 15 }, 10, '#');
+
+		Print(img, std::cout);
+	}
 }
