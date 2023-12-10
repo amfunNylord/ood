@@ -2,13 +2,13 @@
 #include "../../catch2/catch.hpp"
 #include "../lab8/CGumballMachine.h"
 
-std::string MakeState(unsigned count, const std::string state)
+std::string MakeState(unsigned count, const std::string& state)
 {
 	 return "Mighty Gumball, Inc.\nC++-enabled Standing Gumball Model #2016 (with state)\nInventory: " + 
 			std::to_string(count) + " gumball" + (count != 1 ? "s" : "") + "\nMachine is " + state;
 }
 
-
+// следует тестировать отдельные классы, протестировать именно само состояние
 SCENARIO("CHasQuarterState test all functions")
 {
 	GIVEN("Gumball machine with 3 gum")
