@@ -139,7 +139,7 @@ void DrawCircle(Image& image, Point center, int radius, char color)
 	}
 }
 
-void FillCircle(Image& image, Point center, int radius, char color)
+ void FillCircle(Image& image, Point center, int radius, char color)
 {
 	int x = 0;
 	int y = radius;
@@ -165,4 +165,5 @@ void FillCircle(Image& image, Point center, int radius, char color)
 		delta += 2 * (x - y);
 		y--;
 	}
-}
+ }
+

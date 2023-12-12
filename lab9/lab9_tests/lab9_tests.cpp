@@ -102,17 +102,25 @@ SCENARIO("Class Image tests")
 			img.SetPixel({ 10, 10 }, 'l');
 			THEN("Image has 3 tiles")
 			{
-				REQUIRE(Tile::GetInstanceCount() == 3);
+				REQUIRE(Tile::GetInstanceCount() == 3); // покороче тест
+			}
+			AND_WHEN("We change color of 1 pixel tile that has been already changed")
+			{
+				img.SetPixel({ 1, 1 }, 'l');
+				THEN("Image has 3 tiles")
+				{
+					REQUIRE(Tile::GetInstanceCount() == 3);
+				}
 			}
 		}
-		WHEN("We change color of 1 pixel tile that has been already changed")
+		/*WHEN("We change color of 1 pixel tile that has been already changed")
 		{
 			img.SetPixel({ 1, 1 }, 'l');
 			THEN("Image has 2 tiles")
 			{
 				REQUIRE(Tile::GetInstanceCount() == 2);
 			}
-		}
+		}*/
 		/*WHEN("We change color of 1 pixel other tile but the same pos and color as already changed")
 		{
 			img.SetPixel({ 10, 10 }, 'c');

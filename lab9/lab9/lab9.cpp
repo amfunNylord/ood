@@ -50,9 +50,11 @@ int main()
 		Print(img, std::cout);
 	}
 
+	std::cout << std::endl;
+
 	{
 		Image img{ { 31, 31 }, '.' };
-
+		// проверить почему окружность другого радиуса
 		FillCircle(img, { 15, 15 }, 10, '#');
 
 		Print(img, std::cout);

@@ -79,7 +79,9 @@ void Image::SetPixel(Point p, char color)
 
 		int posInTileY = p.y % Tile::SIZE;
 		int posInTileX = p.x % Tile::SIZE;
-		m_tiles[tilePosY][tilePosX].Write([posInTileX, posInTileY, color](auto& tile) { tile.SetPixel({ posInTileX, posInTileY }, color); });
+		// упростить write потом стрелочку
+		//m_tiles[tilePosY][tilePosX].Write([posInTileX, posInTileY, color](auto& tile) { tile.SetPixel({ posInTileX, posInTileY }, color); });
+		m_tiles[tilePosY][tilePosX].Write()->SetPixel({ posInTileX, posInTileY }, color);
 	}
 }
 

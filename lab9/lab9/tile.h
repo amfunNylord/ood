@@ -30,13 +30,7 @@ public:
 	Tile(const Tile& other)
 	{
 		/* Реализуйте недостающий код самостоятельно. */
-		for (int i = 0; i < SIZE; i++)
-		{
-			for (int j = 0; j < SIZE; j++)
-			{
-				m_pixels[i][j] = other.GetPixel(Point(j, i));
-			}
-		}
+		m_pixels = other.m_pixels;
 		// -------------- не удалять ------------
 		assert(m_instanceCount >= 0);
 		++m_instanceCount; // Увеличиваем счётчик тайлов (для целей тестирования).
