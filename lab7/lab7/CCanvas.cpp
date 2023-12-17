@@ -43,8 +43,8 @@ private:
 	PointD m_center;
 };
 
-CCanvas::CCanvas(sf::RenderWindow& window)
-	: m_window(window)
+CCanvas::CCanvas(sf::RenderTarget& target)
+	: m_target(target)
 {
 }
 
@@ -71,7 +71,7 @@ void CCanvas::DrawLine(PointD start, PointD end, RGBAColor color, std::optional<
 		vertex.color = sf::Color(color);
 	}
 
-	m_window.draw(vertices, 4, sf::Quads);
+	m_target.draw(vertices, 4, sf::Quads);
 }
 
 void CCanvas::DrawEllipse(const PointD center, double horizontalRadius, double verticalRadius, std::optional<RGBAColor> borderColor, std::optional<RGBAColor> fillColor, std::optional<double> thickness)
@@ -90,7 +90,7 @@ void CCanvas::DrawEllipse(const PointD center, double horizontalRadius, double v
 		ellipse.setOutlineThickness(float(thickness.value()));
 		ellipse.setOutlineColor(sf::Color(borderColor.value()));
 	}
-	m_window.draw(ellipse);
+	m_target.draw(ellipse);
 }
 
 void CCanvas::FillPolygon(const std::vector<PointD> vertexes, RGBAColor fillColor)
@@ -106,5 +106,5 @@ void CCanvas::FillPolygon(const std::vector<PointD> vertexes, RGBAColor fillColo
 	shape.setFillColor(sf::Color(fillColor));
 	shape.setOutlineColor(sf::Color(fillColor));
 
-	m_window.draw(shape);
+	m_target.draw(shape);
 }

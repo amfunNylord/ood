@@ -4,7 +4,7 @@
 #include "CGroupBorderStyle.h"
 #include "CGroupFillStyle.h"
 
-class CGroup : public IGroup
+class CGroup : public IGroup, std::enable_shared_from_this<IGroup>
 {
 public:
 	CGroup();

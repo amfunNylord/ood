@@ -5,7 +5,7 @@
 class CCanvas : public ICanvas
 {
 public:
-	CCanvas(sf::RenderWindow& window);
+	CCanvas(sf::RenderTarget& window);
 
 	void DrawLine(PointD start, PointD end, RGBAColor color, std::optional<double> thickness) override;
 
@@ -16,5 +16,7 @@ public:
 	void FillPolygon(const std::vector<PointD> vertexes, RGBAColor fillColor) override;
 
 private:
-	sf::RenderWindow& m_window;
+	// renderTarget лучше
+	//sf::RenderWindow& m_window;
+	sf::RenderTarget& m_target;
 };

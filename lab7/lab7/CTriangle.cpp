@@ -1,5 +1,6 @@
 #include "CTriangle.h"
 #include <vector>
+#include <array>
 
 CTriangle::CTriangle(PointD vertex1, PointD vertex2, PointD vertex3)
 	: m_vertex1(vertex1)
@@ -37,8 +38,9 @@ std::optional<RectD> CTriangle::GetFrame()
 
 void CTriangle::SetFrame(const RectD& rect)
 {
-	std::vector<PointD*> vertexes = { &m_vertex1, &m_vertex2, &m_vertex3 };
-
+	// std::array 
+	//std::vector<PointD*> vertexes = { &m_vertex1, &m_vertex2, &m_vertex3 };
+	std::array<PointD*, 3> vertexes = { &m_vertex1, &m_vertex2, &m_vertex3 };
 	std::optional<RectD> currentFrame = GetFrame();
 	double coefX = rect.width / currentFrame.value().width;
 	double coefY = rect.height / currentFrame.value().height;

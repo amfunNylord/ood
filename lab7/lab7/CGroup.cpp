@@ -1,5 +1,6 @@
 #include "CGroup.h"
 #include <stdexcept>
+#include <assert.h>
 
 size_t CGroup::GetShapesCount() const
 {
@@ -10,7 +11,9 @@ std::shared_ptr<IShape> CGroup::GetShapeAtIndex(size_t index)
 {
 	if (index >= GetShapesCount() || index < 0)
 	{
-		throw std::logic_error("Out of range");
+		// out_of_range ex
+		//throw std::logic_error("Out of range");
+		throw std::out_of_range("Out of range");
 	}
 
 	return m_shapes[index];
@@ -20,11 +23,14 @@ void CGroup::InsertShape(const std::shared_ptr<IShape>& shape, size_t index)
 {
 	if (shape == nullptr)
 	{
-		throw std::logic_error("Empty shape");
+		// invalid_argument
+		//throw std::logic_error("Empty shape");
+		throw std::invalid_argument("Empty shape");
 	}
 	if (index < 0 || index > GetShapesCount())
 	{
-		throw std::logic_error("Out of range");
+		//throw std::logic_error("Out of range");
+		throw std::out_of_range("Out of range");
 	}
 	m_shapes.insert(m_shapes.begin() + index, shape);
 }
@@ -33,7 +39,8 @@ void CGroup::RemoveShapeAtIndex(size_t index)
 {
 	if (index >= GetShapesCount() || index < 0)
 	{
-		throw std::logic_error("Out of range");
+		//throw std::logic_error("Out of range");
+		throw std::out_of_range("Out of range");
 	}
 	m_shapes.erase(m_shapes.begin() + index);
 }
@@ -72,7 +79,17 @@ std::optional<RectD> CGroup::GetFrame()
 
 	for (const auto& shape : m_shapes)
 	{
-		auto frame = shape->GetFrame().value();
+		// проверить has-value
+		RectD frame;
+		if (shape->GetFrame().has_value())
+		{
+			frame = shape->GetFrame().value();
+		}
+		else
+		{
+			throw std::invalid_argument("No frame");
+		}
+		frame = shape->GetFrame().value();
 
 		maxX = std::max(maxX, frame.left + frame.width);
 		minX = std::min(minX, frame.left);
@@ -85,7 +102,16 @@ std::optional<RectD> CGroup::GetFrame()
 
 void CGroup::SetFrame(const RectD& rect)
 {
-	auto currentFrame = GetFrame().value();
+	// has_value
+	RectD currentFrame;
+	if (GetFrame().has_value())
+	{
+		currentFrame = GetFrame().value();
+	}
+	else
+	{
+		throw std::invalid_argument("No frame");
+	}
 
 	if (currentFrame.left == 0 && currentFrame.top == 0 && currentFrame.height == 0 && currentFrame.width == 0)
 	{
@@ -97,7 +123,16 @@ void CGroup::SetFrame(const RectD& rect)
 
 	for (const auto& shape : m_shapes)
 	{
-		auto shapeFrame = shape->GetFrame().value();
+		// has_value
+		RectD shapeFrame;
+		if (shape->GetFrame().has_value())
+		{
+			shapeFrame = shape->GetFrame().value();
+		}
+		else
+		{
+			throw std::invalid_argument("No frame");
+		}
 
 		auto leftPointX = rect.left + (shapeFrame.left - currentFrame.left) * coefX;
 		auto leftPointY = rect.top + (shapeFrame.top - currentFrame.top) * coefY;
@@ -111,19 +146,22 @@ void CGroup::SetFrame(const RectD& rect)
 
 std::shared_ptr<IBorderStyle> CGroup::GetLineStyle() const
 {
-	if (!m_borderStyle)
+	// assert можно использовать
+	/*if (!m_borderStyle)
 	{
 		throw std::logic_error("No border style");
-	}
+	}*/
+	assert(m_borderStyle);
 	return m_borderStyle;
 }
 
 std::shared_ptr<IStyle> CGroup::GetFillStyle() const
 {
-	if (!m_fillStyle)
+	/*if (!m_fillStyle)
 	{
 		throw std::logic_error("No line style");
-	}
+	}*/
+	assert(m_fillStyle);
 	return m_fillStyle;
 }
 
@@ -134,8 +172,8 @@ void CGroup::Draw(ICanvas& canvas) const
 		shape->Draw(canvas);
 	}
 }
-
+// не работает . std:: enable_shared_from_this
 std::shared_ptr<IGroup> CGroup::GetGroup()
 {
-	return std::shared_ptr<IGroup>(this);
+	return shared_from_this();
 }
