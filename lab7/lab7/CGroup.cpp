@@ -9,10 +9,8 @@ size_t CGroup::GetShapesCount() const
 
 std::shared_ptr<IShape> CGroup::GetShapeAtIndex(size_t index)
 {
-	if (index >= GetShapesCount() || index < 0)
+	if (index >= GetShapesCount())
 	{
-		// out_of_range ex
-		//throw std::logic_error("Out of range");
 		throw std::out_of_range("Out of range");
 	}
 
@@ -23,13 +21,10 @@ void CGroup::InsertShape(const std::shared_ptr<IShape>& shape, size_t index)
 {
 	if (shape == nullptr)
 	{
-		// invalid_argument
-		//throw std::logic_error("Empty shape");
 		throw std::invalid_argument("Empty shape");
 	}
-	if (index < 0 || index > GetShapesCount())
+	if (index > GetShapesCount())
 	{
-		//throw std::logic_error("Out of range");
 		throw std::out_of_range("Out of range");
 	}
 	m_shapes.insert(m_shapes.begin() + index, shape);
@@ -37,9 +32,8 @@ void CGroup::InsertShape(const std::shared_ptr<IShape>& shape, size_t index)
 
 void CGroup::RemoveShapeAtIndex(size_t index)
 {
-	if (index >= GetShapesCount() || index < 0)
+	if (index >= GetShapesCount())
 	{
-		//throw std::logic_error("Out of range");
 		throw std::out_of_range("Out of range");
 	}
 	m_shapes.erase(m_shapes.begin() + index);
@@ -65,7 +59,7 @@ CGroup::CGroup()
 
 	m_fillStyle = std::make_shared<CGroupFillStyle>(fillGroupEnumerator);
 }
-
+// написать test
 std::optional<RectD> CGroup::GetFrame()
 {
 	if (m_shapes.empty())
@@ -76,10 +70,9 @@ std::optional<RectD> CGroup::GetFrame()
 	double minX = std::numeric_limits<double>::max();
 	double maxY = std::numeric_limits<double>::min();
 	double minY = std::numeric_limits<double>::max();
-
+	// если в группу добавить пустую группу то посчитать фрейм и кроме пустой группы ничего
 	for (const auto& shape : m_shapes)
 	{
-		// проверить has-value
 		RectD frame;
 		if (shape->GetFrame().has_value())
 		{
@@ -87,6 +80,7 @@ std::optional<RectD> CGroup::GetFrame()
 		}
 		else
 		{
+			// посчитать frame
 			throw std::invalid_argument("No frame");
 		}
 		frame = shape->GetFrame().value();
@@ -102,7 +96,6 @@ std::optional<RectD> CGroup::GetFrame()
 
 void CGroup::SetFrame(const RectD& rect)
 {
-	// has_value
 	RectD currentFrame;
 	if (GetFrame().has_value())
 	{
@@ -110,6 +103,7 @@ void CGroup::SetFrame(const RectD& rect)
 	}
 	else
 	{
+		// если пустая группа какой будет фрейм
 		throw std::invalid_argument("No frame");
 	}
 
@@ -123,7 +117,6 @@ void CGroup::SetFrame(const RectD& rect)
 
 	for (const auto& shape : m_shapes)
 	{
-		// has_value
 		RectD shapeFrame;
 		if (shape->GetFrame().has_value())
 		{
@@ -131,6 +124,7 @@ void CGroup::SetFrame(const RectD& rect)
 		}
 		else
 		{
+			// тоже проверить, уменьшить функцию ы
 			throw std::invalid_argument("No frame");
 		}
 
@@ -143,24 +137,15 @@ void CGroup::SetFrame(const RectD& rect)
 		shape->SetFrame(newFrame);
 	}
 }
-
+// сделать для стилей const доступ к стилям
 std::shared_ptr<IBorderStyle> CGroup::GetLineStyle() const
 {
-	// assert можно использовать
-	/*if (!m_borderStyle)
-	{
-		throw std::logic_error("No border style");
-	}*/
 	assert(m_borderStyle);
 	return m_borderStyle;
 }
 
 std::shared_ptr<IStyle> CGroup::GetFillStyle() const
 {
-	/*if (!m_fillStyle)
-	{
-		throw std::logic_error("No line style");
-	}*/
 	assert(m_fillStyle);
 	return m_fillStyle;
 }
@@ -172,7 +157,8 @@ void CGroup::Draw(ICanvas& canvas) const
 		shape->Draw(canvas);
 	}
 }
-// не работает . std:: enable_shared_from_this
+
+// реализовать const метод
 std::shared_ptr<IGroup> CGroup::GetGroup()
 {
 	return shared_from_this();

@@ -16,7 +16,5 @@ public:
 	void FillPolygon(const std::vector<PointD> vertexes, RGBAColor fillColor) override;
 
 private:
-	// renderTarget лучше
-	//sf::RenderWindow& m_window;
 	sf::RenderTarget& m_target;
 };

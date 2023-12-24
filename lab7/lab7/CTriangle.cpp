@@ -38,8 +38,6 @@ std::optional<RectD> CTriangle::GetFrame()
 
 void CTriangle::SetFrame(const RectD& rect)
 {
-	// std::array 
-	//std::vector<PointD*> vertexes = { &m_vertex1, &m_vertex2, &m_vertex3 };
 	std::array<PointD*, 3> vertexes = { &m_vertex1, &m_vertex2, &m_vertex3 };
 	std::optional<RectD> currentFrame = GetFrame();
 	double coefX = rect.width / currentFrame.value().width;
