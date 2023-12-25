@@ -1,7 +1,7 @@
 #pragma once
 #include "IObserver.h"
 #include "CObservable.h"
-#include "WeatherInfo.h"
+#include "SWeatherInfo.h"
 
 class CWeatherData : public CObservable<SWeatherInfo>
 {

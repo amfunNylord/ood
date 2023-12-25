@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include "../../catch2/catch.hpp"
-#include "../WeatherStation/WeatherData.h"
+#include "../WeatherStation/CWeatherData.h"
 
 class TestDisplay1 : public IObserver<SWeatherInfo>
 {

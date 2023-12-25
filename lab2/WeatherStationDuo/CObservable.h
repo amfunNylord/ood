@@ -43,7 +43,7 @@ public:
 		}
 		for (const auto& observer : sortedObservers)
 		{
-			observer.second->Update(data);
+			observer.second->Update(data, *this);
 		}
 	}
 

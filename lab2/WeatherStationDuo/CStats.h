@@ -1,33 +1,32 @@
 #pragma once
-#include "IObserver.h"
 #include "SWeatherInfo.h"
-#include "CNumericStatsData.h"
 #include "CNumericStatsDisplay.h"
 
-class CStatsDisplay : public IObserver<SWeatherInfo>
+class CStats
 {
-private:
-	/* Метод Update сделан приватным, чтобы ограничить возможность его вызова напрямую
-	Классу CObservable он будет доступен все равно, т.к. в интерфейсе IObserver он
-	остается публичным
-	*/
-	void Update(SWeatherInfo const& data) override
+public:
+	CStats(std::ostream& output)
+		: m_output(output)
+	{}
+	void Update(SWeatherInfo const& data) 
 	{
 		m_temperatureStats.Update(data.temperature);
 		m_humidityStats.Update(data.humidity);
 		m_pressureStats.Update(data.pressure);
-		// count в NumericStatsDisplay - done
+
 		m_temperatureStats.IncreaseCount();
 		m_humidityStats.IncreaseCount();
 		m_pressureStats.IncreaseCount();
 
-		CNumericStatsDisplay display;
+		CNumericStatsDisplay display(m_output);
 		display.Display(m_temperatureStats);
 		display.Display(m_humidityStats);
 		display.Display(m_pressureStats);
 	}
 
+private:
 	CNumericStatsData m_temperatureStats = CNumericStatsData("Temperature");
 	CNumericStatsData m_humidityStats = CNumericStatsData("Humidity");
-	CNumericStatsData m_pressureStats= CNumericStatsData("Pressure");
+	CNumericStatsData m_pressureStats = CNumericStatsData("Pressure");
+	std::ostream& m_output;
 };

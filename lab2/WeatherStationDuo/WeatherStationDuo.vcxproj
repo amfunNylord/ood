@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{257c8828-39fd-4e7e-a863-0ee5f8cb578d}</ProjectGuid>
-    <RootNamespace>WeatherStation</RootNamespace>
+    <ProjectGuid>{b4b468e4-bbab-424f-b2a0-a11f75c09c34}</ProjectGuid>
+    <RootNamespace>WeatherStationDuo</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -131,17 +131,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="WeatherStation.cpp" />
+    <ClCompile Include="WeatherStationDuo.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CDisplay.h" />
+    <ClInclude Include="CNumericStatsData.h" />
     <ClInclude Include="CNumericStatsDisplay.h" />
     <ClInclude Include="CObservable.h" />
-    <ClInclude Include="CDisplay.h" />
-    <ClInclude Include="IObservable.h" />
-    <ClInclude Include="IObserver.h" />
-    <ClInclude Include="CNumericStatsData.h" />
+    <ClInclude Include="CStats.h" />
     <ClInclude Include="CStatsDisplay.h" />
     <ClInclude Include="CWeatherData.h" />
+    <ClInclude Include="IObservable.h" />
+    <ClInclude Include="IObserver.h" />
     <ClInclude Include="SWeatherInfo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

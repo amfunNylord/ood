@@ -1,4 +1,4 @@
-#include "WeatherData.h"
+#include "CWeatherData.h"
 #include "CDisplay.h"
 #include "CStatsDisplay.h"
 

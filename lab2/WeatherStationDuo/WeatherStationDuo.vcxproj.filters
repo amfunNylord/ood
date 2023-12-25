@@ -15,36 +15,39 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="WeatherStation.cpp">
+    <ClCompile Include="WeatherStationDuo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CWeatherData.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IObserver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IObservable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CObservable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SWeatherInfo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CStatsDisplay.h">
+    <ClInclude Include="CDisplay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CNumericStatsData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CDisplay.h">
+    <ClInclude Include="CNumericStatsDisplay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CNumericStatsDisplay.h">
+    <ClInclude Include="CObservable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CStatsDisplay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CWeatherData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IObservable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IObserver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SWeatherInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CStats.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
