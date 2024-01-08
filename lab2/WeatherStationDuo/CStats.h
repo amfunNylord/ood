@@ -14,19 +14,15 @@ public:
 		m_humidityStats.Update(data.humidity);
 		m_pressureStats.Update(data.pressure);
 
-		m_temperatureStats.IncreaseCount();
-		m_humidityStats.IncreaseCount();
-		m_pressureStats.IncreaseCount();
-
 		CNumericStatsDisplay display(m_output);
-		display.Display(m_temperatureStats);
-		display.Display(m_humidityStats);
-		display.Display(m_pressureStats);
+		display.Display(m_temperatureStats, "Temperature");
+		display.Display(m_humidityStats, "Humidity");
+		display.Display(m_pressureStats, "Pressure");
 	}
 
 private:
-	CNumericStatsData m_temperatureStats = CNumericStatsData("Temperature");
-	CNumericStatsData m_humidityStats = CNumericStatsData("Humidity");
-	CNumericStatsData m_pressureStats = CNumericStatsData("Pressure");
+	CNumericStatsData m_temperatureStats = CNumericStatsData();
+	CNumericStatsData m_humidityStats = CNumericStatsData();
+	CNumericStatsData m_pressureStats = CNumericStatsData();
 	std::ostream& m_output;
 };

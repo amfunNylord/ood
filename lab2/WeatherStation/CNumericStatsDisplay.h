@@ -4,12 +4,11 @@
 class CNumericStatsDisplay
 {
 public:
-	void Display(CNumericStatsData stats)
+	void Display(CNumericStatsData stats, const std::string& sensorName)
 	{
-		std::cout << "Max " << stats.GetSensorName() << " " << stats.GetMax() << std::endl;
-		std::cout << "Min " << stats.GetSensorName() << " " << stats.GetMin() << std::endl;
-		std::cout << "Average " << stats.GetSensorName() << " " 
-			      << (stats.GetAccumulatedValue() / stats.GetCount()) << std::endl;
+		std::cout << "Max " << sensorName << " " << stats.GetMax() << std::endl;
+		std::cout << "Min " << sensorName << " " << stats.GetMin() << std::endl;
+		std::cout << "Average " << sensorName << " " << stats.GetAverageValue() << std::endl;
 		std::cout << "----------------" << std::endl;
 	}
 };

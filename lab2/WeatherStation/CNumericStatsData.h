@@ -1,13 +1,16 @@
 #pragma once
 #include <iostream>
 
+/*
+* исправления:
+*  убрал название сенсора из поля класса
+*  перенес увеличение количества в метод update
+*  добавил сразу подсчет среднего значения
+*/ 
+
 class CNumericStatsData
 {
-	//display v otdelniy klass - done
 public:
-	CNumericStatsData(const char* sensorName)
-		: m_sensorName(sensorName)
-	{}
 	void Update(double current)
 	{
 		if (m_minimum > current)
@@ -19,12 +22,9 @@ public:
 		{
 			m_maximum = current;
 		}
-
+		IncreaseCount();
 		m_accumulatedValue += current;
-	}
-	void IncreaseCount()
-	{
-		m_count++;
+		m_averageValue = m_accumulatedValue / m_count;
 	}
 	double GetMin()
 	{
@@ -34,23 +34,23 @@ public:
 	{
 		return m_maximum;
 	}
-	double GetAccumulatedValue()
+	double GetAverageValue()
 	{
-		return m_accumulatedValue;
+		return m_averageValue;
 	}
 	double GetCount()
 	{
 		return m_count;
 	}
-	const char* GetSensorName()
-	{
-		return m_sensorName;
-	}
 
 private:
+	void IncreaseCount()
+	{
+		m_count++;
+	}
 	double m_minimum = std::numeric_limits<double>::infinity();
 	double m_maximum = -std::numeric_limits<double>::infinity();
 	double m_accumulatedValue = 0;
+	double m_averageValue = 0;
 	unsigned m_count = 0;
-	const char* m_sensorName;
 };

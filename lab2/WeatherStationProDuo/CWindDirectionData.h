@@ -2,11 +2,16 @@
 #include <numbers>
 #include <cmath>
 
-/*
-*  исправления:
-*   поменял название параметра передаваемое в update, более конкретное
-*   вынес из класса функции, которые не взаимодействуют с полями класса
-*/
+double ToRadians(double degrees)
+{
+	return std::numbers::pi * degrees / 180;
+}
+
+double ToDegrees(double radians)
+{
+	return 180 * radians / std::numbers::pi;
+}
+
 class CWindDirectionData
 {
 public:
@@ -28,13 +33,3 @@ private:
 	double m_cosSum = 0;
 	double m_average = 0;
 };
-
-double ToRadians(double degrees)
-{
-	return std::numbers::pi * degrees / 180;
-}
-
-double ToDegrees(double radians) 
-{
-	return 180 * radians / std::numbers::pi;
-}

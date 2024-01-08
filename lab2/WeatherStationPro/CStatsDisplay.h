@@ -19,25 +19,20 @@ private:
 		m_pressureStats.Update(data.pressure);
 		m_windSpeed.Update(data.wind.speed);
 		m_windDirection.Update(data.wind.direction);
-		
-		m_temperatureStats.IncreaseCount();
-		m_humidityStats.IncreaseCount();
-		m_pressureStats.IncreaseCount();
-		m_windSpeed.IncreaseCount();
 
 		CNumericStatsDisplay display;
-		display.Display(m_temperatureStats);
-		display.Display(m_humidityStats);
-		display.Display(m_pressureStats);
-		display.Display(m_windSpeed);
+		display.Display(m_temperatureStats, "Temperature");
+		display.Display(m_humidityStats, "Humidity");
+		display.Display(m_pressureStats, "Pressure");
+		display.Display(m_windSpeed, "Wind speed");
 		CWindStatsDisplay displayWind;
 		displayWind.Display(m_windDirection);
 	}
 
-	CNumericStatsData m_temperatureStats = CNumericStatsData("Temperature");
-	CNumericStatsData m_humidityStats = CNumericStatsData("Humidity");
-	CNumericStatsData m_pressureStats = CNumericStatsData("Pressure");
-	CNumericStatsData m_windSpeed = CNumericStatsData("Wind speed");
+	CNumericStatsData m_temperatureStats = CNumericStatsData();
+	CNumericStatsData m_humidityStats = CNumericStatsData();
+	CNumericStatsData m_pressureStats = CNumericStatsData();
+	CNumericStatsData m_windSpeed = CNumericStatsData();
 	CWindDirectionData m_windDirection;
 	
 };
