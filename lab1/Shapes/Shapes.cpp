@@ -1,6 +1,7 @@
 #include <iostream>
 #include "CommandController.h"
 #include <SFML/Window.hpp>
+#include "CCanvas.h"
 
 int main()
 {
@@ -9,7 +10,6 @@ int main()
 	window.setFramerateLimit(60);
 	CCanvas canvas(sf::Color(), 0.0, 0.0, window);
 	CommandController commandController(std::cin, std::cout, picture, window, canvas);
-	// баг с повторным вызовом drawPicture меняется цвет фона
 	while (window.isOpen())
 	{
 		while (!std::cin.eof() && !std::cin.fail())
@@ -20,11 +20,9 @@ int main()
 				std::cout << "Unknown command!" << std::endl;
 			}
 		}
-		// check all the window's events that were triggered since the last iteration of the loop
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
-			// "close requested" event: we close the window
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}

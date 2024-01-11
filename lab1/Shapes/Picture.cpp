@@ -13,17 +13,13 @@ void shape::Picture::DeleteShape(std::string shapeId, std::ostream& output)
 	size_t shapesCount = m_shapesVector.size();
 	for (size_t i = 0; i < shapesCount; i++)
 	{
-		if (m_shapesVector[i].get()->GetId() == shapeId)
+		if (m_shapesVector[i]->GetId() == shapeId)
 		{
 			m_shapesVector.erase(m_shapesVector.begin() + i);
 			return;
 		}
 	}
 	output << "Shape with such id isn't exist" << std::endl;
-}
-
-void shape::Picture::DrawPicture()
-{
 }
 
 void shape::Picture::List(std::ostream& output)
@@ -40,7 +36,7 @@ std::shared_ptr<shape::Shape> shape::Picture::GetShape(std::string shapeId, std:
 	size_t shapesCount = m_shapesVector.size();
 	for (size_t i = 0; i < shapesCount; i++)
 	{
-		if (m_shapesVector[i].get()->GetId() == shapeId)
+		if (m_shapesVector[i]->GetId() == shapeId)
 		{
 			return m_shapesVector[i];
 		}

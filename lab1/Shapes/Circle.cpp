@@ -1,26 +1,37 @@
 #include "Circle.h"
-#include <iostream>
-#include "EllipseDrawingStrategy.h"
+#include <sstream>
 
 shape::Circle::Circle(std::string type, std::string color, double x, double y, double r)
-	: ShapeType(type, color, std::make_shared<EllipseDrawingStrategy>())
+	: ShapeType(type, color)
 	, m_x(x)
 	, m_y(y)
 	, m_r(r)
 {
 }
 
-void shape::Circle::Draw(CCanvas& canvas)
+void shape::Circle::Draw(gfx::ICanvas* canvas)
 {
-	std::vector<SPoint> bounds;
-	bounds.emplace_back(SPoint(m_x, m_y));
-	bounds.emplace_back(SPoint(m_r, m_r));
-	VisualObjectInfo objInfo(this->GetColor(), bounds);
-	m_drawingStrategy->Draw(canvas, objInfo);
-}
+	std::string color = GetColor();
+	std::string newFormatColor;
+	for (size_t i = 1; i < color.size(); i++)
+	{
+		newFormatColor += color[i];
+		if (i % 2 == 0)
+		{
+			if (i == 1)
+			{
+				continue;
+			}
+			newFormatColor += ' ';
+		}
+	}
+	std::istringstream stream(newFormatColor);
 
-shape::Circle::~Circle()
-{
+	int firstValue, secondValue, thirdValue;
+	stream >> std::hex >> firstValue >> secondValue >> thirdValue;
+	sf::Color sfColor(firstValue, secondValue, thirdValue);
+	canvas->SetColor(sfColor);
+	canvas->DrawEllipse(m_x, m_y, m_r, m_r);
 }
 
 void shape::Circle::AppendProperties(std::ostream& strm) const

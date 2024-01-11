@@ -4,14 +4,12 @@
 #include "ShapeType.h"
 #include <iostream>
 
-
 namespace shape
 {
 	class Shape
 	{
 	public:
 		Shape(std::string id, std::shared_ptr<ShapeType> type);
-		~Shape() = default;
 
 		void ChangeShape(std::string shapeId, std::string shapeTypeStr, std::shared_ptr<ShapeType> shapeType);
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "ShapeType.h"
+#include "SPoint.h"
 
 namespace shape
 {
@@ -7,16 +8,13 @@ namespace shape
 	{
 	public:
 		Line(std::string type, std::string color, double x1, double y1, double x2, double y2);
-		~Line();
-		void Draw(CCanvas& canvas) override;
+		void Draw(gfx::ICanvas* canvas) override;
 		void AppendProperties(std::ostream& strm) const override;
 		void MoveShape(double dx, double dy) override;
 
 	private:
-		double m_x1;
-		double m_y1;
-		double m_x2;
-		double m_y2;
+		SPoint m_point1;
+		SPoint m_point2;
 	};
 
 }

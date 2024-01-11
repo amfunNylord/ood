@@ -1,11 +1,10 @@
 #include "ShapeType.h"
 #include <sstream>
 
-shape::ShapeType::ShapeType(std::string shapeType, std::string color, std::shared_ptr<IDrawingStrategy>&& drawingStrategy)
+shape::ShapeType::ShapeType(std::string shapeType, std::string color)
 	: m_shapeType(shapeType)
 	, m_color(color)
 {
-	SetDrawingStrategy(std::move(drawingStrategy));
 }
 
 std::string shape::ShapeType::GetType() const
@@ -28,9 +27,4 @@ std::string shape::ShapeType::GetColor() const
 void shape::ShapeType::SetColor(std::string newColor)
 {
 	m_color = newColor;
-}
-
-void shape::ShapeType::SetDrawingStrategy(std::shared_ptr<IDrawingStrategy>&& drawingStrategy)
-{
-	m_drawingStrategy = std::move(drawingStrategy);
 }

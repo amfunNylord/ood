@@ -20,12 +20,12 @@ std::string shape::Shape::GetId() const
 std::string shape::Shape::ToString() const
 {
 	std::ostringstream strm;
-	strm << m_shapeType.get()->GetType() << ' ' << GetId() << ' ' << m_shapeType.get()->GetColor() << ' ';
+	strm << m_shapeType->GetType() << ' ' << GetId() << ' ' << GetShapeType()->GetColor() << ' ';
 	m_shapeType.get()->AppendProperties(strm);
 	return strm.str();
 }
 
 void shape::Shape::ChangeShape(std::string shapeId, std::string shapeTypeStr, std::shared_ptr<ShapeType> shapeType)
 {
-	this->m_shapeType = shapeType;
+	m_shapeType = shapeType;
 }

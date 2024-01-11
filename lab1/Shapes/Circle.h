@@ -7,10 +7,11 @@ namespace shape
 	{
 	public:
 		Circle(std::string type, std::string color, double x, double y, double r);
-		~Circle();
-		void Draw(CCanvas& canvas) override;
+
+		void Draw(gfx::ICanvas* canvas) override;
 		void AppendProperties(std::ostream& strm) const override;
 		void MoveShape(double dx, double dy) override;
+
 	private:
 		double m_x;
 		double m_y;

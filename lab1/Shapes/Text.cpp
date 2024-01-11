@@ -1,9 +1,8 @@
 #include "Text.h"
-#include <iostream>
-#include "TextDrawingStrategy.h"
+#include <sstream>
 
 shape::Text::Text(std::string type, std::string color, double left, double top, double size, std::string text)
-	: ShapeType(type, color, std::make_shared<TextDrawingStrategy>())
+	: ShapeType(type, color)
 	, m_left(left)
 	, m_top(top)
 	, m_size(size)
@@ -11,17 +10,29 @@ shape::Text::Text(std::string type, std::string color, double left, double top, 
 {
 }
 
-void shape::Text::Draw(CCanvas& canvas)
+void shape::Text::Draw(gfx::ICanvas* canvas)
 {
-	std::vector<SPoint> bounds;
-	bounds.emplace_back(SPoint(m_left, m_top));
-	bounds.emplace_back(SPoint(m_size, m_size));
-	VisualObjectInfo objInfo(this->GetColor(), bounds, m_text);
-	m_drawingStrategy->Draw(canvas, objInfo);
-}
+	std::string color = GetColor();
+	std::string newFormatColor;
+	for (size_t i = 1; i < color.size(); i++)
+	{
+		newFormatColor += color[i];
+		if (i % 2 == 0)
+		{
+			if (i == 1)
+			{
+				continue;
+			}
+			newFormatColor += ' ';
+		}
+	}
+	std::istringstream stream(newFormatColor);
 
-shape::Text::~Text()
-{
+	int firstValue, secondValue, thirdValue;
+	stream >> std::hex >> firstValue >> secondValue >> thirdValue;
+	sf::Color sfColor(firstValue, secondValue, thirdValue);
+	canvas->SetColor(sfColor);
+	canvas->DrawText(m_left, m_top, m_size, m_text);
 }
 
 void shape::Text::AppendProperties(std::ostream& strm) const

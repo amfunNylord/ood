@@ -50,10 +50,6 @@ bool CommandController::HandleCommand()
 	return false;
 }
 
-CommandController::~CommandController()
-{
-}
-
 bool CommandController::AddShape(std::istream& args)
 {
 	std::string shapeId, shapeColor, shapeType;
@@ -125,7 +121,7 @@ bool CommandController::ChangeColor(std::istream& args)
 	{
 		return true;
 	}
-	changeableShape.get()->GetShapeType()->SetColor(shapeColor);
+	changeableShape->GetShapeType()->SetColor(shapeColor);
 	return true;
 }
 
@@ -146,7 +142,7 @@ bool CommandController::ChangeShape(std::istream& args)
 		return true;
 	}
 	std::shared_ptr<shape::ShapeType> shape;
-	std::string shapeColor = changeableShape.get()->GetShapeType()->GetColor();
+	std::string shapeColor = changeableShape->GetShapeType()->GetColor();
 	if (shapeType == CIRCLE_TYPE)
 	{
 		double x, y, r;
@@ -181,7 +177,7 @@ bool CommandController::ChangeShape(std::istream& args)
 		shape = std::make_shared<shape::Text>(TEXT_TYPE, shapeColor, left, top, size, textContents);
 	}
 
-	changeableShape.get()->ChangeShape(shapeId, shapeType, shape);
+	changeableShape->ChangeShape(shapeId, shapeType, shape);
 
 	return true;
 }
@@ -197,7 +193,7 @@ bool CommandController::DrawShape(std::istream& args)
 		return true;
 	}
 
-	drawableShape.get()->GetShapeType()->Draw(m_canvas);
+	drawableShape->GetShapeType()->Draw(&m_canvas);
 
 	m_window.display();
 
@@ -208,7 +204,7 @@ bool CommandController::DrawPicture()
 {
 	for (const auto& shape : m_picture.GetAllShapes())
 	{
-		shape.get()->GetShapeType()->Draw(m_canvas);
+		shape->GetShapeType()->Draw(&m_canvas);
 	}
 
 	m_window.display();
@@ -228,7 +224,7 @@ bool CommandController::MoveShape(std::istream& args)
 	}
 	double dx, dy;
 	args >> dx >> dy;
-	drawableShape.get()->GetShapeType()->MoveShape(dx, dy);
+	drawableShape->GetShapeType()->MoveShape(dx, dy);
 
 	return true;
 }
@@ -240,7 +236,7 @@ bool CommandController::MovePicture(std::istream& args)
 
 	for (const auto& shape : m_picture.GetAllShapes())
 	{
-		shape.get()->GetShapeType()->MoveShape(dx, dy);
+		shape->GetShapeType()->MoveShape(dx, dy);
 	}
 	return true;
 }

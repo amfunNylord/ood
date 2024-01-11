@@ -4,8 +4,10 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <SFML/Graphics/RenderWindow.hpp>
 
 #include "Shape.h"
+#include "CCanvas.h"
 #include "Picture.h"
 
 class CommandController
@@ -13,7 +15,6 @@ class CommandController
 public:
 	CommandController(std::istream& input, std::ostream& output, shape::Picture& picture, sf::RenderWindow& window, CCanvas& canvas);
 	bool HandleCommand();
-	~CommandController();
 
 private:
 	bool AddShape(std::istream& args);

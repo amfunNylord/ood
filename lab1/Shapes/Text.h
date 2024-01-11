@@ -7,11 +7,9 @@ namespace shape
 	{
 	public:
 		Text(std::string type, std::string color, double left, double top, double size, std::string text);
-		~Text();
 
-		void Draw(CCanvas& canvas) override;
+		void Draw(gfx::ICanvas* canvas) override;
 		void AppendProperties(std::ostream& strm) const override;
-
 		void MoveShape(double dx, double dy) override;
 
 	private:
@@ -19,6 +17,5 @@ namespace shape
 		double m_top;
 		double m_size;
 		std::string m_text;
-
 	};
 }

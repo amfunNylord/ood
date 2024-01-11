@@ -77,6 +77,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\src\SFML-2.6.0\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -94,6 +95,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\src\SFML-2.6.0\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -111,6 +113,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\src\SFML-2.6.0\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,6 +131,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\src\SFML-2.6.0\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,41 +146,28 @@
     <ClCompile Include="CCanvas.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CommandController.cpp" />
-    <ClCompile Include="EllipseDrawingStrategy.cpp" />
-    <ClCompile Include="VisualObjectInfo.cpp" />
     <ClCompile Include="Line.cpp" />
-    <ClCompile Include="LineDrawingStrategy.cpp" />
     <ClCompile Include="Picture.cpp" />
     <ClCompile Include="Rectangle.cpp" />
-    <ClCompile Include="RectangleDrawingStrategy.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Shapes.cpp" />
     <ClCompile Include="ShapeType.cpp" />
     <ClCompile Include="Text.cpp" />
-    <ClCompile Include="TextDrawingStrategy.cpp" />
     <ClCompile Include="Triangle.cpp" />
-    <ClCompile Include="TriangleDrawingStrategy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCanvas.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="CommandController.h" />
-    <ClInclude Include="EllipseDrawingStrategy.h" />
     <ClInclude Include="ICanvas.h" />
-    <ClInclude Include="IDrawingStrategy.h" />
-    <ClInclude Include="VisualObjectInfo.h" />
     <ClInclude Include="Line.h" />
-    <ClInclude Include="LineDrawingStrategy.h" />
     <ClInclude Include="Picture.h" />
     <ClInclude Include="SPoint.h" />
     <ClInclude Include="Rectangle.h" />
-    <ClInclude Include="RectangleDrawingStrategy.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="ShapeType.h" />
     <ClInclude Include="Text.h" />
-    <ClInclude Include="TextDrawingStrategy.h" />
     <ClInclude Include="Triangle.h" />
-    <ClInclude Include="TriangleDrawingStrategy.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
