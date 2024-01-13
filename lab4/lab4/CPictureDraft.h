@@ -10,8 +10,6 @@ class CPictureDraft
 public:
 	typedef std::vector<std::unique_ptr<CShape>> Storage;
 
-	CPictureDraft();
-
 	bool IsEmpty() const;
 
 	void AddShape(std::unique_ptr<CShape>&& shape);

@@ -19,7 +19,3 @@ const std::unique_ptr<CShape>& CPictureDraft::GetShape(size_t index) const
 {
 	return m_shapes.at(index);
 }
-
-CPictureDraft::CPictureDraft()
-{
-}

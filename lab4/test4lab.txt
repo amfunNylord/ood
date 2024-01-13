@@ -1,0 +1,4 @@
+rectangle green 100 100 400 300
+triangle red 20 20 70 70 120 20
+ellipse blue 300 300 20 30
+polygon yellow 8 200 200 50

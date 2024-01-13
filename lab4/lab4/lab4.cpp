@@ -7,7 +7,8 @@
 
 int main()
 {
-	CDesigner designer(std::make_unique<CShapeFactory>());
+	CShapeFactory shapeFactory;
+	CDesigner designer(shapeFactory);
 	CPainter painter;
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Lab4", sf::Style::Close);
 	window.setFramerateLimit(60);

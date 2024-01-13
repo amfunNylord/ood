@@ -1,7 +1,7 @@
 #include "CTriangle.h"
 
-CTriangle::CTriangle(Color color, Point vertex1, Point vertex2, Point vertex3, size_t index)
-	: CShape(color, index)
+CTriangle::CTriangle(Color color, Point vertex1, Point vertex2, Point vertex3)
+	: CShape(color)
 	, m_vertex1(vertex1)
 	, m_vertex2(vertex2)
 	, m_vertex3(vertex3)

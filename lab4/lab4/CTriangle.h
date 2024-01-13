@@ -6,7 +6,7 @@
 class CTriangle : public CShape
 {
 public:
-	CTriangle(Color color, Point vertex1, Point vertex2, Point vertex3, size_t index);
+	CTriangle(Color color, Point vertex1, Point vertex2, Point vertex3);
 	void Draw(ICanvas* canvas) override;
 
 private:

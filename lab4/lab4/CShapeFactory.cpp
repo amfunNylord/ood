@@ -6,47 +6,72 @@
 
 #include <stdexcept>
 #include <sstream>
+
 // разбить на отдельные функции
-std::unique_ptr<CShape> CShapeFactory::CreateShape(const std::string& description)
+
+std::unique_ptr<CRectangle> CreateRectangle(const Color& color, std::istringstream& input)
 {
-	m_countOfCreatedShapes++;
-	std::unique_ptr<CShape> shape;
+	double xLeftTop, yLeftTop, xRightBottom, yRightBottom;
+	input >> xLeftTop >> yLeftTop >> xRightBottom >> yRightBottom;
+	return std::make_unique<CRectangle>(color, Point(xLeftTop, yLeftTop), Point(xRightBottom, yRightBottom));
+}
 
-	std::string shapeStr, colorStr;
+std::unique_ptr<CTriangle> CreateTriangle(const Color& color, std::istringstream& input)
+{
+	double xVertex1, yVertex1, xVertex2, yVertex2, xVertex3, yVertex3;
+	input >> xVertex1 >> yVertex1 >> xVertex2 >> yVertex2 >> xVertex3 >> yVertex3;
+	return std::make_unique<CTriangle>(color, Point(xVertex1, yVertex1), Point(xVertex2, yVertex2), Point(xVertex3, yVertex3));
+}
 
-	std::istringstream input(description);
-	input >> shapeStr >> colorStr;
+std::unique_ptr<CEllipse> CreateEllipse(const Color& color, std::istringstream& input)
+{
+	double xCenter, yCenter, horizontalRadius, verticalRadius;
+	input >> xCenter >> yCenter >> horizontalRadius >> verticalRadius;
+	return std::make_unique<CEllipse>(color, Point(xCenter, yCenter), horizontalRadius, verticalRadius);
+}
 
-	Color color = ConvertStrColor(colorStr);
+std::unique_ptr<CRegularPolygon> CreateRegularPolygon(const Color& color, std::istringstream& input)
+{
+	unsigned vertexCount;
+	double xCenter, yCenter, radius;
+	input >> vertexCount >> xCenter >> yCenter >> radius;
+	return std::make_unique<CRegularPolygon>(color, vertexCount, Point(xCenter, yCenter), radius);
+}
 
-	if (shapeStr == "rectangle")
+std::unique_ptr<CShape> CreateSpecificShape(const std::string& shapeType, const Color& color, std::istringstream& input)
+{
+	if (shapeType == "rectangle")
 	{
-		double xLeftTop, yLeftTop, xRightBottom, yRightBottom;
-		input >> xLeftTop >> yLeftTop >> xRightBottom >> yRightBottom;
-		shape = std::make_unique<CRectangle>(color, Point(xLeftTop, yLeftTop), Point(xRightBottom, yRightBottom), m_countOfCreatedShapes);
+		return CreateRectangle(color, input);
 	}
-	else if (shapeStr == "triangle")
+	else if (shapeType == "triangle")
 	{
-		double xVertex1, yVertex1, xVertex2, yVertex2, xVertex3, yVertex3;
-		input >> xVertex1 >> yVertex1 >> xVertex2 >> yVertex2 >> xVertex3 >> yVertex3;
-		shape = std::make_unique<CTriangle>(color, Point(xVertex1, yVertex1), Point(xVertex2, yVertex2), Point(xVertex3, yVertex3), m_countOfCreatedShapes);
+		return CreateTriangle(color, input);
 	}
-	else if (shapeStr == "ellipse")
+	else if (shapeType == "ellipse")
 	{
-		double xCenter, yCenter, horizontalRadius, verticalRadius;
-		input >> xCenter >> yCenter >> horizontalRadius >> verticalRadius;
-		shape = std::make_unique<CEllipse>(color, Point(xCenter, yCenter), horizontalRadius, verticalRadius, m_countOfCreatedShapes);
+		return CreateEllipse(color, input);
 	}
-	else if (shapeStr == "polygon")
+	else if (shapeType == "polygon")
 	{
-		unsigned vertexCount;
-		double xCenter, yCenter, radius;
-		input >> vertexCount >> xCenter >> yCenter >> radius;
-		shape = std::make_unique<CRegularPolygon>(color, vertexCount, Point(xCenter, yCenter), radius, m_countOfCreatedShapes);
+		return CreateRegularPolygon(color, input);
 	}
 	else
 	{
 		throw std::invalid_argument("Unknown shape type");
 	}
+}
+
+std::unique_ptr<CShape> CShapeFactory::CreateShape(const std::string& description)
+{
+	std::string shapeStr, colorStr;
+	std::istringstream input(description);
+
+	input >> shapeStr >> colorStr;
+
+	Color color = ConvertStrColor(colorStr);
+
+	std::unique_ptr<CShape> shape = CreateSpecificShape(shapeStr, color, input);
+
 	return shape;
 }

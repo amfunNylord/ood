@@ -1,18 +1,8 @@
 #include "CShape.h"
 
-CShape::CShape(Color color, size_t index)
+CShape::CShape(Color color)
 	: m_color(color)
-	, m_index(index)
 {
-}
-
-CShape::~CShape()
-{
-}
-
-size_t CShape::GetIndex()
-{
-	return m_index;
 }
 
 Color CShape::GetColor()

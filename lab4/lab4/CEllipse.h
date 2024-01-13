@@ -5,7 +5,7 @@
 class CEllipse : public CShape
 {
 public:
-	CEllipse(Color color, Point center, double horizontalRadius, double verticalRadius, size_t index);
+	CEllipse(Color color, Point center, double horizontalRadius, double verticalRadius);
 	void Draw(ICanvas* canvas) override;
 
 private:

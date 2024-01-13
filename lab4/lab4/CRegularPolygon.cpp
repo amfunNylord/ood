@@ -1,8 +1,8 @@
 #include "CRegularPolygon.h"
 #include <numbers>
 
-CRegularPolygon::CRegularPolygon(Color color, unsigned vertexCount, Point center, double radius, size_t index)
-	: CShape(color, index)
+CRegularPolygon::CRegularPolygon(Color color, unsigned vertexCount, Point center, double radius)
+	: CShape(color)
 	, m_vertexCount(vertexCount)
 	, m_center(center)
 	, m_radius(radius)

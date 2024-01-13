@@ -5,12 +5,8 @@
 
 using namespace std;
 
-CDesigner::CDesigner(std::unique_ptr<IShapeFactory>&& factory)
-	: m_factory(std::forward<std::unique_ptr<IShapeFactory>>(factory))
-{
-}
-
-CDesigner::~CDesigner()
+CDesigner::CDesigner(IShapeFactory& factory)
+	: m_factory(factory)
 {
 }
 
@@ -20,7 +16,7 @@ CPictureDraft CDesigner::CreateDraft(std::istream& inputData)
 	string line;
 	while (getline(inputData, line))
 	{
-		draft.AddShape(m_factory.get()->CreateShape(line));
+		draft.AddShape(m_factory.CreateShape(line));
 	}
 	return draft;
 }

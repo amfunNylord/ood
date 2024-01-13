@@ -1,8 +1,8 @@
 #include "CRectangle.h"
 #include <SFML/Graphics.hpp>
 
-CRectangle::CRectangle(Color color, Point leftTop, Point rightBottom, size_t index)
-	: CShape(color, index)
+CRectangle::CRectangle(Color color, Point leftTop, Point rightBottom)
+	: CShape(color)
 	, m_leftTop(leftTop)
 	, m_rightBottom(rightBottom)
 {
