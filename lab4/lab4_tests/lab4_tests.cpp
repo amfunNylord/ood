@@ -74,7 +74,7 @@ SCENARIO("Test CPictureDraft")
 	CPictureDraft draft;
 	WHEN("We add some shape")
 	{
-		std::unique_ptr<CShape> rectangle = std::make_unique<CRectangle>(Color::Green, Point(100, 100), Point(500, 500), 0);
+		std::unique_ptr<CShape> rectangle = std::make_unique<CRectangle>(Color::Green, Point(100, 100), Point(500, 500));
 		draft.AddShape(std::move(rectangle));
 		THEN("It isn't empty")
 		{
@@ -83,9 +83,9 @@ SCENARIO("Test CPictureDraft")
 	}
 	WHEN("We add 3 shapes")
 	{
-		std::unique_ptr<CShape> rectangle = std::make_unique<CRectangle>(Color::Green, Point(100, 100), Point(500, 500), 0);
-		std::unique_ptr<CShape> triangle = std::make_unique<CTriangle>(Color::Black, Point(100, 100), Point(200, 200), Point(300, 300), 1);
-		std::unique_ptr<CShape> ellipse = std::make_unique<CEllipse>(Color::Pink, Point(250, 250), 100, 200, 2);
+		std::unique_ptr<CShape> rectangle = std::make_unique<CRectangle>(Color::Green, Point(100, 100), Point(500, 500));
+		std::unique_ptr<CShape> triangle = std::make_unique<CTriangle>(Color::Black, Point(100, 100), Point(200, 200), Point(300, 300));
+		std::unique_ptr<CShape> ellipse = std::make_unique<CEllipse>(Color::Pink, Point(250, 250), 100, 200);
 		draft.AddShape(std::move(rectangle));
 		draft.AddShape(std::move(triangle));
 		draft.AddShape(std::move(ellipse));
@@ -97,51 +97,43 @@ SCENARIO("Test CPictureDraft")
 }
 
 SCENARIO("Test CShapeFactory and all shapes")
-{
+{ // проверить работу фабрики через dynamic cast
 	CShapeFactory factory;
-	CPainter painter;
 	CPictureDraft draft;
-	std::ostringstream output;
-	auto canvas = std::make_unique<TextCanvas>(output);
 	WHEN("Adds rectangle with valid values")
 	{
 		draft.AddShape(factory.CreateShape("rectangle yellow 100 100 200 200"));
-		painter.DrawPicture(draft, canvas.get());
-		THEN("We get the message of creation")
+
+		THEN("We get rectangle object")
 		{
-			REQUIRE(output.str() == "set color yellow\ndraw line from 100 100 to 200 100\ndraw line from 200 100 to 200 200\n"
-									"draw line from 200 200 to 100 200\ndraw line from 100 200 to 100 100\n");
+			REQUIRE(dynamic_cast<CRectangle*>(draft.GetShape(0).get()) != nullptr);
 		}
 	}
 	WHEN("Adds triangle with valid values")
 	{
 		draft.AddShape(factory.CreateShape("triangle black 100 100 200 200 300 300"));
-		painter.DrawPicture(draft, canvas.get());
-		THEN("We get the message of creation")
+		
+		THEN("We get triangle object")
 		{
-			REQUIRE(output.str() == "set color black\ndraw line from 100 100 to 200 200\ndraw line from 200 200 to 300 300\n"
-									"draw line from 300 300 to 100 100\n");
+			REQUIRE(dynamic_cast<CTriangle*>(draft.GetShape(0).get()) != nullptr);	
 		}
 	}
 	WHEN("Adds ellipse with valid values")
 	{
 		draft.AddShape(factory.CreateShape("ellipse pink 250 250 100 200"));
-		painter.DrawPicture(draft, canvas.get());
-		THEN("We get the message of creation")
+		
+		THEN("We get ellipse object")
 		{
-			REQUIRE(output.str() == "set color pink\ndraw ellipse, center is 250 250, horizontal radius is 100, vertical radius is 200\n");
+			REQUIRE(dynamic_cast<CEllipse*>(draft.GetShape(0).get()) != nullptr);
 		}
 	}
 	WHEN("Adds polygon with valid values")
 	{
 		draft.AddShape(factory.CreateShape("polygon green 8 100 150 50"));
-		painter.DrawPicture(draft, canvas.get());
-		THEN("We get the message of creation")
+	
+		THEN("We get regular polygon object")
 		{
-			REQUIRE(output.str() == "set color green\ndraw line from 150 150 to 135.355 185.355\ndraw line from 135.355 185.355 to 100 200\n"
-									"draw line from 100 200 to 64.6447 185.355\ndraw line from 64.6447 185.355 to 50 150\n"
-									"draw line from 50 150 to 64.6447 114.645\ndraw line from 64.6447 114.645 to 100 100\n"
-									"draw line from 100 100 to 135.355 114.645\ndraw line from 135.355 114.645 to 150 150\n");
+			REQUIRE(dynamic_cast<CRegularPolygon*>(draft.GetShape(0).get()) != nullptr);
 		}
 	}
 }
@@ -154,7 +146,7 @@ SCENARIO("Test CPainter")
 	auto canvas = std::make_unique<TextCanvas>(output);
 	WHEN("Trying to draw rectangle")
 	{
-		std::unique_ptr<CShape> rectangle = std::make_unique<CRectangle>(Color::Green, Point(100, 100), Point(500, 500), 0);
+		std::unique_ptr<CShape> rectangle = std::make_unique<CRectangle>(Color::Green, Point(100, 100), Point(500, 500));
 		draft.AddShape(std::move(rectangle));
 		painter.DrawPicture(draft, canvas.get());
 		THEN("We get the message of creation rectangle")
@@ -165,7 +157,7 @@ SCENARIO("Test CPainter")
 	}
 	WHEN("Trying to draw triangle")
 	{
-		std::unique_ptr<CShape> triangle = std::make_unique<CTriangle>(Color::Black, Point(100, 100), Point(200, 200), Point(300, 300), 0);
+		std::unique_ptr<CShape> triangle = std::make_unique<CTriangle>(Color::Black, Point(100, 100), Point(200, 200), Point(300, 300));
 		draft.AddShape(std::move(triangle));
 		painter.DrawPicture(draft, canvas.get());
 		THEN("We get the message of creation triangle")
@@ -176,7 +168,7 @@ SCENARIO("Test CPainter")
 	}
 	WHEN("Trying to draw ellipse")
 	{
-		std::unique_ptr<CShape> ellipse = std::make_unique<CEllipse>(Color::Pink, Point(250, 250), 100, 200, 0);
+		std::unique_ptr<CShape> ellipse = std::make_unique<CEllipse>(Color::Pink, Point(250, 250), 100, 200);
 		draft.AddShape(std::move(ellipse));
 		painter.DrawPicture(draft, canvas.get());
 		THEN("We get the message of creation ellipse")
@@ -186,7 +178,7 @@ SCENARIO("Test CPainter")
 	}
 	WHEN("Trying to draw polygon")
 	{
-		std::unique_ptr<CShape> polygon = std::make_unique<CRegularPolygon>(Color::Green, 8, Point(100, 150), 50, 0);
+		std::unique_ptr<CShape> polygon = std::make_unique<CRegularPolygon>(Color::Green, 8, Point(100, 150), 50);
 		draft.AddShape(std::move(polygon));
 		painter.DrawPicture(draft, canvas.get());
 		THEN("We get the message of creation polygon")
@@ -199,10 +191,10 @@ SCENARIO("Test CPainter")
 	}
 	WHEN("Trying to draw all shapes together")
 	{
-		std::unique_ptr<CShape> rectangle = std::make_unique<CRectangle>(Color::Green, Point(100, 100), Point(500, 500), 0);
-		std::unique_ptr<CShape> triangle = std::make_unique<CTriangle>(Color::Black, Point(100, 100), Point(200, 200), Point(300, 300), 1);
-		std::unique_ptr<CShape> ellipse = std::make_unique<CEllipse>(Color::Pink, Point(250, 250), 100, 200, 2);
-		std::unique_ptr<CShape> polygon = std::make_unique<CRegularPolygon>(Color::Green, 8, Point(100, 150), 50, 3);
+		std::unique_ptr<CShape> rectangle = std::make_unique<CRectangle>(Color::Green, Point(100, 100), Point(500, 500));
+		std::unique_ptr<CShape> triangle = std::make_unique<CTriangle>(Color::Black, Point(100, 100), Point(200, 200), Point(300, 300));
+		std::unique_ptr<CShape> ellipse = std::make_unique<CEllipse>(Color::Pink, Point(250, 250), 100, 200);
+		std::unique_ptr<CShape> polygon = std::make_unique<CRegularPolygon>(Color::Green, 8, Point(100, 150), 50);
 		draft.AddShape(std::move(rectangle));
 		draft.AddShape(std::move(triangle));
 		draft.AddShape(std::move(ellipse));
@@ -225,7 +217,8 @@ SCENARIO("Test CPainter")
 
 SCENARIO("Test CDesigner class")
 {
-	CDesigner designer(std::make_unique<CShapeFactory>());
+	CShapeFactory factory;
+	CDesigner designer(factory);
 	CPainter painter;
 	std::ostringstream output;
 	auto canvas = std::make_unique<TextCanvas>(output);
