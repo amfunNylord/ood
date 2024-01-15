@@ -134,7 +134,6 @@
     <ClCompile Include="WeatherStationProDuo.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CDisplay.h" />
     <ClInclude Include="CNumericStatsData.h" />
     <ClInclude Include="CNumericStatsDisplay.h" />
     <ClInclude Include="CObservable.h" />

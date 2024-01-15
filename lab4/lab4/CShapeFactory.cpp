@@ -7,8 +7,6 @@
 #include <stdexcept>
 #include <sstream>
 
-// разбить на отдельные функции
-
 std::unique_ptr<CRectangle> CreateRectangle(const Color& color, std::istringstream& input)
 {
 	double xLeftTop, yLeftTop, xRightBottom, yRightBottom;

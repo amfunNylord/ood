@@ -3,6 +3,7 @@
 
 int main()
 {
+	// не должен знать о ветре weatherdata
 	CWeatherData weatherData;
 	CWeatherDataPro weatherDataPro;
 	CStatsDisplay display(weatherData, weatherDataPro, std::cout);

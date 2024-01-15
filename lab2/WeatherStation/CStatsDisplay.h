@@ -16,7 +16,7 @@ private:
 		m_temperatureStats.Update(data.temperature);
 		m_humidityStats.Update(data.humidity);
 		m_pressureStats.Update(data.pressure);
-
+		// либо функция, либо вложить один класс в другой или ссылался
 		CNumericStatsDisplay display;
 		display.Display(m_temperatureStats, "Temperature");
 		display.Display(m_humidityStats, "Humidity");

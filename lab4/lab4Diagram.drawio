@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-01-13T09:44:01.128Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="HLTmObXpINK5CKvvizW9" version="22.1.18" type="device">
+<mxfile host="app.diagrams.net" modified="2024-01-15T05:53:07.291Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="AmlD4MsudTd9aYIufJ0i" version="22.1.18" type="device">
   <diagram name="Страница — 1" id="-YNvMnQjq7Tij7BPcwQZ">
-    <mxGraphModel dx="2117" dy="1691" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2440" dy="1822" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -301,16 +301,7 @@
         <mxCell id="N0VwTf_wLLAzWA49e4GN-1" value="" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.note;pointerEvents=1" parent="1" vertex="1">
           <mxGeometry x="1500" y="67" width="29.7" height="29.7" as="geometry" />
         </mxCell>
-        <mxCell id="N0VwTf_wLLAzWA49e4GN-2" value="добавить связть между фабркой и shape" style="shape=note;strokeWidth=2;fontSize=14;size=20;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#666600;" parent="1" vertex="1">
-          <mxGeometry x="1480" y="-390" width="110.00000000000001" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="N0VwTf_wLLAzWA49e4GN-3" value="верно обозначить приватные данные" style="shape=note;strokeWidth=2;fontSize=14;size=20;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#666600;" parent="1" vertex="1">
-          <mxGeometry x="-30" y="170" width="110.00000000000001" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="N0VwTf_wLLAzWA49e4GN-4" value="интерфейс canvas как в задании" style="shape=note;strokeWidth=2;fontSize=14;size=20;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#666600;" parent="1" vertex="1">
-          <mxGeometry x="-90" y="-560" width="110.00000000000001" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="64j2xE9YTnTn6bp_q6YN-1" value="" style="endArrow=diamondThin;endFill=0;endSize=24;html=1;rounded=0;" edge="1" parent="1" source="t78Gs1ULenRcxNKrH4xe-40" target="t78Gs1ULenRcxNKrH4xe-63">
+        <mxCell id="64j2xE9YTnTn6bp_q6YN-1" value="" style="endArrow=diamondThin;endFill=0;endSize=24;html=1;rounded=0;" parent="1" source="t78Gs1ULenRcxNKrH4xe-40" target="t78Gs1ULenRcxNKrH4xe-63" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
             <mxPoint x="1100" y="-280" as="sourcePoint" />
             <mxPoint x="1260" y="-280" as="targetPoint" />

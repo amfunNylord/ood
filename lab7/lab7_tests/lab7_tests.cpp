@@ -284,3 +284,24 @@ SCENARIO("Test frame functions")
 		}
 	}
 }
+
+SCENARIO("Test CGroup class")
+{
+	GIVEN("Empty group")
+	{
+		CGroup group;
+		WHEN("We add in group empty group and try to get frame of main group")
+		{
+			auto group1 = std::make_shared<CGroup>();
+			group.InsertShape(group1, 0);
+			THEN("We get zero frame")
+			{
+				auto frame = group.GetFrame().value();
+				REQUIRE(frame.left == 0.0);
+				REQUIRE(frame.top == 0.0);
+				REQUIRE(frame.height == 0.0);
+				REQUIRE(frame.width == 0.0);
+			}
+		}
+	}
+}

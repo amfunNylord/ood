@@ -113,21 +113,5 @@ SCENARIO("Class Image tests")
 				}
 			}
 		}
-		/*WHEN("We change color of 1 pixel tile that has been already changed")
-		{
-			img.SetPixel({ 1, 1 }, 'l');
-			THEN("Image has 2 tiles")
-			{
-				REQUIRE(Tile::GetInstanceCount() == 2);
-			}
-		}*/
-		/*WHEN("We change color of 1 pixel other tile but the same pos and color as already changed")
-		{
-			img.SetPixel({ 10, 10 }, 'c');
-			THEN("Image has 2 tiles")
-			{
-				REQUIRE(Tile::GetInstanceCount() == 2);
-			}
-		}*/
 	}
 }

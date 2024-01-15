@@ -26,6 +26,7 @@ Image::Image(Size size, char color)
 
 	CoW<Tile> defaultTile = CoW<Tile>(color);
 
+	// оптимизировать, в ресайз можно засунуть и может сделать одномерный массив
 	m_tiles.resize(tileCountY);
 
 	for (int i = 0; i < tileCountY; i++)

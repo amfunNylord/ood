@@ -1,0 +1,13 @@
+SCENARIO("Calculate frame of group with empty group and figure")
+{
+	CGroup group1;
+	auto group2Ptr = std::make_shared<CGroup>();
+	auto rectangle = std::make_shared<CRectangle>(100, 100, 300, 200);
+	group1.InsertShape(group2Ptr, 0);
+	group1.InsertShape(rectangle, 1);
+	auto frame = group1.GetFrame().value();
+	REQUIRE(group1.GetFrame().value().left == 100);
+	REQUIRE(group1.GetFrame().value().top == 100);
+	REQUIRE(group1.GetFrame().value().width == 300);
+	REQUIRE(group1.GetFrame().value().height == 200);
+}

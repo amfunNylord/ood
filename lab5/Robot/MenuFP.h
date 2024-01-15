@@ -6,7 +6,7 @@
 #include <memory>
 #include <string>
 #include <vector>
-
+// сделать так чтобы класс menu не знал про макро команды
 class CMenuFP
 {
 public:
@@ -44,13 +44,28 @@ public:
 	{
 		m_exit = true;
 	}
-
 	void BeginMacro()
 	{
 		if (!m_macroEditing)
 		{
-			std::cout << "Enter macro shortcut: ";
-			std::getline(std::cin, m_macroInfo.shortcut);
+			// если уже есть такой shortcut
+			while (true)
+			{
+				std::cout << "Enter macro shortcut: ";
+				std::getline(std::cin, m_macroInfo.shortcut);
+
+				auto it = std::find_if(m_items.begin(), m_items.end(), [&](const Item& item) {
+					return item.shortcut == m_macroInfo.shortcut;
+				});
+				if (it == m_items.end())
+				{
+					break;
+				}
+				else
+				{
+					std::cout << "Oops, this shortcut is already used" << std::endl;
+				}
+			}
 
 			std::cout << "Enter macro description: ";
 			std::getline(std::cin, m_macroInfo.description);

@@ -39,7 +39,7 @@ void MakePicture(std::shared_ptr<CSlide> slide)
 	group->InsertShape(sun, 2);
 	group->InsertShape(houseMain, 3);
 	group->InsertShape(houseRoof, 4);
-	group->SetFrame(RectD(400, 300, 400, 300));
+	//group->SetFrame(RectD(400, 300, 400, 300));
 	slide->InsertShape(group, 0);
 }
 

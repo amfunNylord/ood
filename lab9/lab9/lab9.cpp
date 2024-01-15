@@ -46,6 +46,8 @@ int main()
 		Image img{ { 31, 31 }, '.' };
 
 		DrawCircle(img, { 15, 15 }, 10, '#');
+		// исправить рисование окрудности единичного радиуса
+		DrawCircle(img, { 15, 15 }, 0, 'k');
 		
 		Print(img, std::cout);
 	}

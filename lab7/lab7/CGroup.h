@@ -11,11 +11,14 @@ public:
 	std::optional<RectD> GetFrame() override;
 	void SetFrame(const RectD& rect) override;
 
-	std::shared_ptr<IBorderStyle> GetLineStyle() const override;
-	std::shared_ptr<IStyle> GetFillStyle() const override;
+	std::shared_ptr<IBorderStyle> GetLineStyle() override;
+	std::shared_ptr<const IBorderStyle> GetLineStyle() const override;
+	std::shared_ptr<IStyle> GetFillStyle() override;
+	std::shared_ptr<const IStyle> GetFillStyle() const override;
 	void Draw(ICanvas& canvas) const override;
 
 	std::shared_ptr<IGroup> GetGroup() override;
+	std::shared_ptr<const IGroup> GetGroup() const override;
 
 	size_t GetShapesCount() const override;
 	std::shared_ptr<IShape> GetShapeAtIndex(size_t index) override;

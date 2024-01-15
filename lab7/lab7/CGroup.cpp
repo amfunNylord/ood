@@ -80,18 +80,23 @@ std::optional<RectD> CGroup::GetFrame()
 		}
 		else
 		{
-			// посчитать frame
-			throw std::invalid_argument("No frame");
+			continue;
 		}
-		frame = shape->GetFrame().value();
 
 		maxX = std::max(maxX, frame.left + frame.width);
 		minX = std::min(minX, frame.left);
 		maxY = std::max(maxY, frame.top + frame.height);
 		minY = std::min(minY, frame.top);
 	}
-
-	return RectD{ minX, minY, maxX - minX, maxY - minY };
+	// пустаая группа возвращает nullopt а группа пустых групп возвращает 0000
+	if (maxX == std::numeric_limits<double>::min())
+	{
+		return RectD(0, 0, 0, 0);
+	}
+	else
+	{
+		return RectD{ minX, minY, maxX - minX, maxY - minY };
+	}
 }
 
 void CGroup::SetFrame(const RectD& rect)
@@ -103,8 +108,7 @@ void CGroup::SetFrame(const RectD& rect)
 	}
 	else
 	{
-		// если пустая группа какой будет фрейм
-		throw std::invalid_argument("No frame");
+		currentFrame = RectD(0, 0, 0, 0);
 	}
 
 	if (currentFrame.left == 0 && currentFrame.top == 0 && currentFrame.height == 0 && currentFrame.width == 0)
@@ -124,8 +128,7 @@ void CGroup::SetFrame(const RectD& rect)
 		}
 		else
 		{
-			// тоже проверить, уменьшить функцию ы
-			throw std::invalid_argument("No frame");
+			continue;
 		}
 
 		auto leftPointX = rect.left + (shapeFrame.left - currentFrame.left) * coefX;
@@ -138,13 +141,25 @@ void CGroup::SetFrame(const RectD& rect)
 	}
 }
 // сделать для стилей const доступ к стилям
-std::shared_ptr<IBorderStyle> CGroup::GetLineStyle() const
+std::shared_ptr<IBorderStyle> CGroup::GetLineStyle()
 {
 	assert(m_borderStyle);
 	return m_borderStyle;
 }
 
-std::shared_ptr<IStyle> CGroup::GetFillStyle() const
+std::shared_ptr<const IBorderStyle> CGroup::GetLineStyle() const
+{
+	assert(m_borderStyle);
+	return m_borderStyle;
+}
+
+std::shared_ptr<IStyle> CGroup::GetFillStyle()
+{
+	assert(m_fillStyle);
+	return m_fillStyle;
+}
+
+std::shared_ptr<const IStyle> CGroup::GetFillStyle() const
 {
 	assert(m_fillStyle);
 	return m_fillStyle;
@@ -160,6 +175,11 @@ void CGroup::Draw(ICanvas& canvas) const
 
 // реализовать const метод
 std::shared_ptr<IGroup> CGroup::GetGroup()
+{
+	return shared_from_this();
+}
+
+std::shared_ptr<const IGroup> CGroup::GetGroup() const
 {
 	return shared_from_this();
 }

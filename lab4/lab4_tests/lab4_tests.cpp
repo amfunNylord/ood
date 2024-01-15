@@ -97,7 +97,7 @@ SCENARIO("Test CPictureDraft")
 }
 
 SCENARIO("Test CShapeFactory and all shapes")
-{ // проверить работу фабрики через dynamic cast
+{ 
 	CShapeFactory factory;
 	CPictureDraft draft;
 	WHEN("Adds rectangle with valid values")
